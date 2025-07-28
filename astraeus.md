@@ -82,7 +82,7 @@ Each sub-agent can be granted a limited set of Claude Code’s internal tools de
 **Overview:** You will now systematically create the sub-agent definition files and workflow files. The process will proceed in layered stages, each building on the last. Remember that each stage’s output will become context for the next, so don’t try to do everything at once. We will proceed in the following high-level phases:
 
 1. **Documentation Preparation** – ensure the project has a structure for persistent context (Claude.md files) and version control.
-2. **Project Context Analysis** – gather information about the current project to inform agent designs.
+2. **Project Context Analysis** – gather information about the current project to inform agent designs or follow guidence in $ARGUMENTS.
 3. **Role Planning** – determine exactly which sub-agents to create (using the broad roles list as a starting point).
 4. **Agent Definition Generation** – for each role, generate a deep-scoped agent prompt file in the required schema.
 5. **Workflow/Task Agent Definition** – define any composite “task” agents that orchestrate multi-step processes using the sub-agents (if applicable).
