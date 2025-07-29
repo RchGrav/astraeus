@@ -44,7 +44,7 @@ cp astraeus.md ~/.claude/commands/
 From the root of your target project:
 
 ```bash
-claude code .
+claude
 ```
 
 ### 3. Execute the Orchestrator
