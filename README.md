@@ -230,34 +230,6 @@ Architect: "Proposing microservice split for module X"
 Security: "Reviewing data flow between services"
 DevOps: "Preparing service mesh configuration"
 ```
-
----
-
-## 📋 Prerequisites
-
-- **Claude Pro** subscription (for Claude Code access)
-- **Git repository** (or willingness to initialize one)
-- **Clear project structure** (Astraeus works best with organized codebases)
-- **Defined tech stack** (package.json, requirements.txt, go.mod, etc.)
-
----
-
-## 🤝 Contributing
-
-### Adding Agent Templates
-Contribute domain-specific agent templates:
-```markdown
-# In agents/templates/[domain]-[role].md
----
-name: fintech-compliance-officer
-when: "Project contains payment processing"
-tools: Read, Grep, WebSearch
----
-```
-
-### Sharing Project Patterns
-Help others by sharing what agents Astraeus created for your project type.
-
 ---
 
 ## 📜 License
