@@ -30,6 +30,22 @@ These guiding principles explain the philosophy of the setup and must be reflect
 
 * **Context Isolation & Focus:** Each sub-agent operates with its own **isolated context** – it does not automatically inherit the main session’s conversation or any global knowledge. This means **each agent’s instructions must be entirely self-sufficient and laser-focused on its task**, guiding it to gather whatever information it needs using its tools or provided inputs. Because sub-agents execute “in the dark” (with no direct user interaction or visibility until they finish), their prompts must explicitly clarify **what to do, how to do it, and how to report back**. **Only provide the minimal necessary input** to a sub-agent (files, diffs, logs, etc.) so it can act decisively – do not dump the entire project or conversation on it. In turn, each sub-agent must return a **self-contained output** (a report, diff, or result) that the Primary agent can forward or use directly without additional interpretation. This isolation keeps the main conversation context uncluttered and ensures each agent works with clarity and focus.
 
+### 🧠 High-Impact Pre-Implementation Validation
+
+ Sub-agents are most powerful when acting as **unbiased, expert consultants** brought in for deep, focused technical analysis *before* implementation begins. Each sub-agent is a senior specialist in its domain — an "architectural second opinion" summoned into a clean context window to inspect a proposal, plan, or existing pattern. Their job is not to generate code in isolation, but to surface:
+
+ * Foundational design flaws or scaling issues
+ * Language- or framework-specific pitfalls
+ * Risk areas in performance, memory, concurrency, or inter-process communication
+ * Security posture or data handling concerns
+ * Alternative data structures or algorithms
+ * Best practices alignment (idiomatic usage, modularity, testing patterns, etc.)
+
+ The sub-agent then returns a **concise, unbiased technical report** with recommendations — acting like a world-class principal engineer peer-reviewing a plan before time and resources are committed. This ensures fewer rewrites, higher architectural quality, and more confidence moving forward.
+
+ **Sub-agents shine not by doing the work, but by showing you how to do it better.**
+
+
 * **Git-Centric Workflow Discipline:** *Version control is paramount.* Every agent must operate with Git best practices front-of-mind:
 
   * **Always be in a Git repository.** If the project is not already under git, the orchestrator should initialize a repo immediately (e.g., run `git init`) and ensure the initial state is committed. No work should proceed outside of version control.
@@ -119,7 +135,7 @@ By the end of Step 2, we should have a clear understanding of:
 
 ### Step 3: Strategic Role Planning
 
-**Goal:** Compile a **comprehensive roster of sub-agent roles** to implement, tailored to the project’s needs, and map out how they will work together. This is where we decide “who” our AI team members are.
+**Goal:** Compile a **comprehensive roster of sub-agent roles** to implement, tailored to the project’s needs, and map out how they will work together. This is where we decide “who” our AI team members are, we ultimately want **a crew of agents acting as senior technical consultants**. Think of each sub-agent as a principal engineer you’d bring into a design review. Their value is in **examining a problem with fresh eyes**, providing architectural feedback, and helping you avoid missteps *before* coding begins. They return well-reasoned expert recommendations — not finished implementations.
 
 Actions in this phase:
 
@@ -127,6 +143,10 @@ Actions in this phase:
 
   Here is the comprehensive list of potential role categories (to be pruned/refined):
 
+  * **Architecture Validator** – inspects proposed implementations or design plans and provides unbiased feedback, identifying scale risks, poor abstractions, or non-idiomatic choices in the language/framework.
+  * **Memory & Concurrency Consultant** – flags problematic data structures, unsafe thread usage, or places where performance or memory usage will degrade at scale.
+  * **Language Specialist** (e.g. Python, Go, Java) – validates that planned patterns are idiomatic and leverage the ecosystem properly. Suggests better APIs, concurrency models, or error handling strategies.
+  * **Fresh Eyes Review Agent** – provides an independent pre-implementation review of a proposed plan or code skeleton, checking for risks, missing edge cases, or blind spots in the approach.
   * **Vertical Market Consultant** – An industry/domain advisor (e.g. a *Finance Industry Consultant* if this is a fintech project, or *Healthcare Compliance Expert* for a health app). Provides domain-specific context, requirements, or regulations.
   * **Domain Expert Persona** – General subject-matter experts who give high-level guidance (e.g. a *Cryptography Professor* for security, a *UX Design Guru* for usability best practices).
   * **World-Class Researcher** – An agent to research algorithms or technical approaches (e.g. reading academic papers or blogs for a given problem).
