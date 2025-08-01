@@ -94,8 +94,11 @@ Each phase MUST be completed thoroughly before moving to the next. We WILL expli
 * **Usage Guideline for Claude.md:** In each `CLAUDE.md`, write an introduction explaining its purpose: that agents and developers MUST update it with any *new* insights or decisions made during their tasks, especially those not obvious from the content alone. Emphasize that it’s for hard-won knowledge, not trivial things the agent already “knows” or that are obvious from reading the content. This ensures future agents or developers can quickly get context and avoid repeating past mistakes. It’s essentially an evolving knowledge base for the project.
 * **Deploy Astraeus Instructions in Root `CLAUDE.md`:** Append a concise section to the root `CLAUDE.md` that describes the newly set up agentic environment, how to interact with Astraeus, and the core philosophy of the sub-agents (e.g., non-direct file modification, parallel processing, context sharing via memory).
 * **Setup Dedicated Sub-Agent Memory (`.claude/sub_agents_memory.md`):** You **MUST** create the file `.claude/sub_agents_memory.md` (if it does not already exist). This file WILL serve as a shared knowledge base for context related to sub-agent usage, decisions, and any special context sub-agents wish to convey to the main LLM. Memories MUST be explicitly added here by sub-agents.
-* **Import Sub-Agent Memory into Root `CLAUDE.md`:** You **MUST** ensure the root `CLAUDE.md` contains the exact import line: `# Added by Astraeus Sigma 9000 Sub Agent Compiler - @.claude/sub_agents_memory.md`.
-
+* **Import Sub-Agent Memory into Root `CLAUDE.md`:** You **MUST** ensure the root `CLAUDE.md` contains this import section: 
+``` markdown
+# Added by Astraeus Sigma 9000 Sub Agent Compiler
+- @.claude/sub_agents_memory.md`.
+```
 *(By the end of Step 1, we should have a structured documentation scaffold and activated MCP memory, setting the stage for intelligent context management.)*
 
 ### Step 2: Project Comprehension and Contextual Analysis
