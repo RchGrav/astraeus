@@ -47,29 +47,6 @@ Due to the "No Direct Code Modification" policy, sub-agents produce reports and 
 Think broadly about **every role or expertise** that might be needed now or in the foreseeable future for this project. We want a **full-spectrum AI team**. Below is a comprehensive list of role categories to implement as sub-agents (each will later be deep-scoped with domain-specific details):
 Use **ultrathink** to consider how to deeply specify sub-agent archetypes with world-class expertise and credentials with a narrow focus when they would be beneficial in the development flow based on the list above. Expect to have one or more sub-agents per archetype, personified with expert titles and responsibilities and tasks designed to offset the primary LLM's context through the performance of support tasks. We want no blind spots in our AI team’s skill set.
 
-### Available Tools for Agents
-
-Each sub-agent can be granted a limited set of Claude Code’s internal tools depending on its needs. Below is the complete list of tools that can be assigned, along with their functions (for reference when deciding permissions):
-
-| Tool           | Description                                                                 |
-| :------------- | :-------------------------------------------------------------------------- |
-| **Bash** | Executes shell commands (for build, test, deployment scripts, etc.)         |
-| **Edit** | Edits files (inline modifications to code or docs)                          |
-| **Glob** | Finds files by pattern matching (to locate relevant files)                  |
-| **Grep** | Searches within file contents for patterns (useful for code analysis)       |
-| **LS** | Lists files and directories (for project navigation)                        |
-| **MultiEdit** | Performs multiple atomic edits in one file (batch modifications)            |
-| **NotebookEdit** | Modifies Jupyter notebook cells                                             |
-| **NotebookRead** | Reads Jupyter notebook content                                              |
-| **Read** | Reads file contents                                                         |
-| **Task** | Invokes another sub-agent to handle a sub-task (spawns a new agent context) |
-| **TodoWrite** | Creates/manages structured TODO lists                                       |
-| **WebFetch** | Fetches content from a URL (web GET requests)                               |
-| **WebSearch** | Performs web search (with optional domain filtering)                        |
-| **Write** | Creates or overwrites files                                                 |
-
-> **Note:** By default, if a sub-agent’s `tools` field is omitted, it inherits **all** tools available to the main session. We **MUST NOT** do that except for perhaps very general coordinator agents; instead, explicitly list only the minimal tools each agent needs to reduce security surface and avoid distractions. (For example, a “UI/UX Specialist” might need only Read, Edit, and maybe WebSearch for design references, but not Bash or Write.)
-
 ---
 
 ## CRITICAL EXECUTION PLAN: Step-by-Step Mandate
@@ -79,11 +56,10 @@ Each sub-agent can be granted a limited set of Claude Code’s internal tools de
 ### Run Type Determination & Initial Setup Handling
 
 **IMPERATIVE:** Your first action **MUST** be to determine if this is an initial setup run or an update run.
-1.  Check if the `.claude/agents/` directory exists and contains any sub-agent definition files.
-2.  **If it's an initial setup (no existing agents in `.claude/agents/`):**
-    * Proceed with the **full initial setup flow**, starting with **"Pre-flight Check: Model Context Protocol (MCP) Servers"** and continuing through **"Step 1: Documentation & MCP Memory Setup"** then the rest of the phases.
+1.  **If you determine this is an initial setup run:**
     * You **MUST** confirm the user: "Initiating a new AI development environment setup. I will now perform initial configuration and create your custom sub-agent team."
-3.  **If it's an update run (existing agents found in `.claude/agents/`):**
+    * Proceed with the **full initial setup flow**, starting with **"Pre-flight Check: Model Context Protocol (MCP) Servers"** and continuing through **"Step 1: Documentation & MCP Memory Setup"** then the rest of the phases.
+2.  **If you determine this is an update run (an existing installation is detected):**
     * You **MUST** explicitly inform the user: "Existing sub-agent definitions detected. I will now re-evaluate and update all existing agents, and create any new ones, based on the current project context and the latest instructions in this prompt. This will ensure your AI team is continuously enhanced and optimized."
     * You **MUST** then proceed directly to **"Pre-flight Check: Model Context Protocol (MCP) Servers"** (as it applies to all runs) and then continue with **"Step 1: Documentation & MCP Memory Setup (continued for all runs)"** and the subsequent phases.
 
@@ -115,7 +91,7 @@ Each phase MUST be completed thoroughly before moving to the next. We WILL expli
 **Goal:** Set up infrastructure for shared knowledge, persistent context across agents, and dedicated sub-agent memory.
 
 * **Ensure Persistent Docs:** Verify that every important folder contains a `CLAUDE.md` documentation file (create one if missing). These files will serve as living design/notes documents for that folder. They MUST contain an index of files and key information or decisions relevant to that folder’s content. (For instance, `backend/CLAUDE.md` might list major modules and any recent design decisions or tricky caveats in backend code.)
-* **Usage Guideline for Claude.md:** In each `CLAUDE.md`, write an introduction explaining its purpose: that agents and developers MUST update it with any *new* insights or decisions made during their tasks, especially those not obvious from the code alone. Emphasize that it’s for hard-won knowledge, not trivial things the agent already “knows” or that are obvious from reading the content. This ensures future agents or developers can quickly get context and avoid repeating past mistakes. It’s essentially an evolving knowledge base for the project.
+* **Usage Guideline for Claude.md:** In each `CLAUDE.md`, write an introduction explaining its purpose: that agents and developers MUST update it with any *new* insights or decisions made during their tasks, especially those not obvious from the content alone. Emphasize that it’s for hard-won knowledge, not trivial things the agent already “knows” or that are obvious from reading the content. This ensures future agents or developers can quickly get context and avoid repeating past mistakes. It’s essentially an evolving knowledge base for the project.
 * **Deploy Astraeus Instructions in Root `CLAUDE.md`:** Append a concise section to the root `CLAUDE.md` that describes the newly set up agentic environment, how to interact with Astraeus, and the core philosophy of the sub-agents (e.g., non-direct file modification, parallel processing, context sharing via memory).
 * **Setup Dedicated Sub-Agent Memory (`.claude/sub_agents_memory.md`):** You **MUST** create the file `.claude/sub_agents_memory.md` (if it does not already exist). This file WILL serve as a shared knowledge base for context related to sub-agent usage, decisions, and any special context sub-agents wish to convey to the main LLM. Memories MUST be explicitly added here by sub-agents.
 * **Import Sub-Agent Memory into Root `CLAUDE.md`:** You **MUST** ensure the root `CLAUDE.md` contains the exact import line: `# Added by Astraeus Sigma 9000 Sub Agent Compiler - @.claude/sub_agents_memory.md`.
@@ -126,7 +102,7 @@ Each phase MUST be completed thoroughly before moving to the next. We WILL expli
 
 **Goal:** Gather essential context about the project to inform agent designs.
 
-* **Think Hard** to inventory the project state, review existing documentation, assess the domain & complexity, and identify immediate & future needs. This requires careful inference and pattern recognition to inform optimal agent design. Use the tools (e.g., `LS`, `Read`, `Glob`) to survey the directory. Identify major components – programming languages used, key frameworks or libraries, any existing tests, CI configurations, documentation, etc. This WILL influence what specialized roles are needed (e.g., if there’s a `mobile/` directory, perhaps a Mobile App Specialist agent; if there’s Terraform or Kubernetes config, maybe an Infrastructure agent).
+* **Think Hard** to inventory the project state, review existing documentation, assess the domain & complexity, and identify immediate & future needs. This requires careful inference and pattern recognition to inform optimal agent design. Use your tools (e.g., `LS`, `Read`, `Glob`) to survey the directory. Identify major components – programming languages used, key frameworks or libraries, any existing tests, CI configurations, documentation, etc. This WILL influence what specialized roles are needed (e.g., if there’s a `mobile/` directory, perhaps a Mobile App Specialist agent; if there’s Terraform or Kubernetes config, maybe an Infrastructure agent).
     // orchestrator: think hard level engaged
 * Review any existing `README.md`, design docs, or `CLAUDE.md` files if present. Extract the project’s goals, target users, and known pain points if documented. If the project has open issues or TODOs in comments, note common themes (are there many bug fixes needed? Lots of planned features?).
 * Determine the domain of the project (e.g. fintech web app, machine learning library, etc.) and the complexity (monolith vs microservices, etc.). This helps in tailoring the expert personas. For example, a fintech project might benefit from a “Financial Regulations Consultant” agent, whereas a game development project might need a “Graphics Engine Specialist.”
@@ -141,7 +117,7 @@ By the end of this analysis, you SHOULD have a clear picture of the project’s 
 * **Think** about the full set of agents and workflows the project WILL need. When creating the details of each agent and workflow, ENSURE completeness and accuracy.
     // orchestrator: think level engaged
 * **Compile Initial Role List:** Start with the **Broad Scoped Roles** list above and then **ultrathink** if there are any other specialist roles not represented that are needed for this project. Be thorough – refine the list by removing any irrelevant ones and adding any new specialized roles that emerged from Step 2’s analysis.
-    * **IMPERATIVE: Include Critic/Reviewer Roles:** You **MUST** include dedicated "Critic" and "Reviewer" sub-agents (e.g., `code-reviewer-critic`, `security-auditor-reviewer`, `design-validator`, `memory-manager`) in your roster. These agents are essential for "fresh eyes assessment" and leveraging their isolated context for unbiased critical evaluation.
+    * **IMPERATIVE: Include Critic/Reviewer Roles:** You **MUST** include dedicated "Critic" and "Reviewer" sub-agents (e.g., `content-reviewer-critic`, `security-auditor-reviewer`, `design-validator`, `memory-manager`) in your roster. These agents are essential for "fresh eyes assessment" and leveraging their isolated context for unbiased critical evaluation.
 * **Role Naming & Focus:** Pay close attention to how you name and scope each role. Avoid using the word "developer" in agent names (or expecting sub-agents to do all coding) as this can mislead their behavior and purpose. Instead, use terms like "expert", "specialist", or other precise titles that reflect an advisory or analytical role. The name itself can prime the agent’s persona, so it MUST align with its function. We do not want sub-agents simply performing tasks in isolation; rather, each agent SHOULD leverage its expertise to guide, analyze, or improve the process (e.g., suggesting a better approach or catching inefficiencies) as part of the team. Design each role to be a focused, precision component in the overall workflow.
     * **Naming Convention (from `agent-creator-meta`):** For the agent `name` (identifier), you **MUST** use lowercase letters, numbers, and hyphens only; it SHOULD typically be 2-4 words joined by hyphens; it MUST clearly indicate the agent's primary function; it MUST BE memorable and easy to type; and it MUST avoid generic terms like "helper" or "assistant."
 * **Assign Tools per Role:** For each role in the list, decide which tools it absolutely needs. Apply the principle of least privilege: e.g., a planning or consulting agent might not need any file or shell access (maybe just `WebSearch` and `Read` for project docs), whereas an implementation-focused agent definitely needs `Read`, `Write`, `Edit`, and perhaps `Bash` for running tests (with the understanding that `Edit`/`Write` are for report generation, not direct file modification, as per policy). Mark down the minimal tools for each; this WILL go in the `tools` field. (Remember, if we omit `tools`, the agent gets full access by default, which we generally want to avoid.)
@@ -235,7 +211,7 @@ You MUST adhere to the following process and meet all checklist items:
 -   **Security Review:** Ensure no secrets or sensitive data are exposed in your output. Sanitize inputs and follow security best practices where applicable.
 -   **Validation:** If your work involves content or configuration, your analysis MUST include how to validate it (run tests, linters, or analysis appropriate to your role) to ensure it works as intended.
 -   **Memory Refinement:** If the 'memory' tool is available, you MUST explicitly `Write` or `Edit` the `.claude/sub_agents_memory.md` file to add any extra context, hard-won knowledge, decisions, or dispositions that might be useful for the main LLM or other sub-agents. This is how you pass important context and refine Claude's memory regarding your operations.
--   [Any role-specific checklist items, e.g. for Code Reviewer: “No duplicate content; functions are well-documented.” For QA: “All user requirements have corresponding tests.” etc.]
+-   [Any role-specific checklist items, e.g. for Content Reviewer: “No duplicate content; functions are well-documented.” For QA: “All user requirements have corresponding tests.” etc.]
 
 ### Output Requirements
 Your final answer/output MUST include:
