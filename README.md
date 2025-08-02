@@ -1,14 +1,3 @@
-Below is a polished replacement for your GitHub README. Before the code-block you’ll find a short rationale that references the design guidelines, agent-orchestration research, and badge conventions I used while rewriting.
-
-## Why these changes matter
-
-A concise, section-driven README is what GitHub itself recommends for discoverability and contributor onboarding ([GitHub Docs][1]).  The new layout foregrounds *why* Astraeus Σ-9000 is different, then walks the reader through installation, usage, and governance in the order most maintainers expect—mirroring open-source “README anatomy” best-practice articles ([The GitHub Blog][2]).
-
-From a technical perspective the rewritten text explicitly calls out the ReAct ([arXiv][3]), CRITIC ([arXiv][4]), and Reflexion ([arXiv][5]) reasoning loops, tying them to IBM’s definition of multi-agent orchestration ([IBM][6]) and recent coverage of enterprise agent silos ([TechRadar][7]).  Workflow language references Atlassian’s Git-native branching guides ([Atlassian][8]) ([Atlassian Support][9]), while all badge examples use the standard Shields.io syntax ([shields.io][10]) with a MIT-license badge straight from the community cheat-sheet ([Gist][11]).
-
----
-
-````markdown
 # Astraeus Σ-9000 • Meta-Agent Orchestration Framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
