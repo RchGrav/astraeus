@@ -104,20 +104,3 @@ This project is released under the **MIT License**. See the [LICENSE](LICENSE) f
 
 > *“The best AI team is the one engineered specifically for **your** codebase.”*
 > — **Astraeus Σ-9000**
-
-```
-
-::contentReference[oaicite:11]{index=11}
-```
-
-[1]: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes?utm_source=chatgpt.com "About READMEs - GitHub Docs"
-[2]: https://github.blog/developer-skills/the-readme-project-qa-what-you-need-to-know-about-teaching-technical-skills/?utm_source=chatgpt.com "The ReadME Project Q&A: What you need to know about teaching ..."
-[3]: https://arxiv.org/abs/2210.03629?utm_source=chatgpt.com "ReAct: Synergizing Reasoning and Acting in Language Models"
-[4]: https://arxiv.org/abs/2305.11738?utm_source=chatgpt.com "CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing"
-[5]: https://arxiv.org/abs/2303.11366?utm_source=chatgpt.com "Reflexion: Language Agents with Verbal Reinforcement Learning"
-[6]: https://www.ibm.com/think/topics/ai-agent-orchestration?utm_source=chatgpt.com "What is AI Agent Orchestration? - IBM"
-[7]: https://www.techradar.com/pro/even-ai-agents-arent-immune-to-silos?utm_source=chatgpt.com "Even AI agents aren't immune to silos"
-[8]: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow?utm_source=chatgpt.com "Gitflow Workflow | Atlassian Git Tutorial"
-[9]: https://support.atlassian.com/bitbucket-cloud/docs/workflow-for-git-feature-branching/?utm_source=chatgpt.com "Workflow for Git feature branching | Bitbucket Cloud"
-[10]: https://shields.io/badges?utm_source=chatgpt.com "Static Badge - Shields.io"
-[11]: https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba?utm_source=chatgpt.com "Markdown License Badges for your Project - GitHub Gist"
