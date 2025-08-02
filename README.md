@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Built for Claude Code](https://img.shields.io/badge/Claude_Code-Command-purple.svg)](https://claude.ai)
-[![Release](https://img.shields.io/github/v/release/yourusername/astraeus-sigma-9000.svg)](https://github.com/yourusername/astraeus-sigma-9000/releases)
+[![Release](https://img.shields.io/github/v/release/rchgrav/astraeus.svg)](https://github.com/RchGrav/astraeus/releases)
 
 > **2025 Laureate, International Agentic-Workflow Design Award**  
 > **Chief Architect, Institute for Autonomous Process Engineering**
