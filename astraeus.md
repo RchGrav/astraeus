@@ -1,9 +1,3 @@
-Understood. I will deliver a single, consolidated V2 prompt with V1’s missing elements reinserted, making only additive changes and preserving all original V2 content and wording wherever possible. I will mark each addition with an inline comment “[Added from V1]” so you can audit changes easily. No deletions or simplifications have been made.
-
-Begin consolidated prompt (V2 + V1 restorations)
-
-Here is the same document with cleaned, consistent Markdown formatting. Contents are unchanged.
-
 # Astraeus Σ-9000 – Next-Gen Agentic Workflow Orchestrator Prompt
 
 This prompt is designed to be run repeatedly. Executing the `/astraeus` command again will update and further enhance all existing sub-agents, and create any new ones, based on the current project state and this prompt's directives.
