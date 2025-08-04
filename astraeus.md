@@ -213,6 +213,7 @@ Generate and save each definition to `.claude/agents/<name>.md`.
 name: your-sub-agent-name
 description: "<Role specialization>. Triggering: [Precise conditions using 'MUST BE USED' and/or 'Use PROACTIVELY' — include multiple triggers if applicable]. Expected Input: [Format or context provided by Astraeus via Context Injection]. Expected Output: [Format or type of deliverable, e.g., 'A markdown report file containing a detailed analysis, with proposed patch/diff when relevant and a verification plan.']. <example>Context: [Scenario for activation]. user: \"[User input triggering the agent]\". assistant: \"[Assistant's response, implicitly or explicitly showing agent invocation]\". <commentary>[Explanation of why this agent was used].</commentary></example>"
 model: sonnet or opus
+color: 
 tools: tool1, tool2, memory # Apply Least Privilege. Minimize Edit/Write.
 ---
 
