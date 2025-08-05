@@ -124,8 +124,6 @@ You will now systematically create the sub-agent definitions and workflow files.
   claude mcp list
   # If critical servers are missing, create installation commands:
   claude mcp add memory --scope local --env MEMORY_FILE_PATH=./.claude/server-memory.json -- npx -y @modelcontextprotocol/server-memory
-  claude mcp add filesystem --scope local --env ALLOWED_DIRECTORIES=./ -- npx -y @modelcontextprotocol/server-filesystem
-  claude mcp add fetch --scope local --env ALLOWED_URLS=* -- npx -y @modelcontextprotocol/server-fetch
   claude mcp add sequential-thinking --scope local -- npx -y @modelcontextprotocol/server-sequential-thinking
   ```
 * **User Instruction:** If the MCP Servers did not exist, after adding then you **MUST** stop execution and instruct the user to restart Claude Code and run this command again for the changes to take effect.
