@@ -152,7 +152,10 @@ You will now systematically create the sub-agent definitions and workflow files.
 claude mcp add memory --scope project -- npx -y @modelcontextprotocol/server-memory
 claude mcp add sequential-thinking --scope project -- npx -y @modelcontextprotocol/server-sequential-thinking
 ```
-* **YOU MUST** verify the MCP servers are working and accessible. If the MCP servers are not accessible ask the user to restart Claude Code.. if they are not working after a restart you must troubleshoot or get permission to continue without the MCP servers from the user and explain the downside.
+* **YOU MUST** verify the MCP servers are working and accessible.
+ - STOP IF MCP SERVERS ARE NOT WORKING OR GET PERMISSION TO CONTINIUE PAST THIS POINT
+ - If the MCP servers are not accessible ask the user to restart Claude Code..
+ - If they are not working after a restart you must troubleshoot or get permission to continue without the MCP servers from the user and explain the downside.
 
 #### Handling `$ARGUMENTS` (User Directives) (Applies to all runs)
 
