@@ -128,8 +128,7 @@ You will now systematically create the sub-agent definitions and workflow files.
   claude mcp add fetch --scope local --env ALLOWED_URLS=* -- npx -y @modelcontextprotocol/server-fetch
   claude mcp add sequential-thinking --scope local -- npx -y @modelcontextprotocol/server-sequential-thinking
   ```
-* **Critical Check:** Run `lsof -i :14317` (or `:4317` for local agent) to verify MCP server connectivity
-* **User Instruction:** If `.mcp.json` is modified or MCP servers were missing, you **MUST** stop execution and instruct the user to restart Claude Code and run this command again for the changes to take effect.
+* **User Instruction:** If the MCP Servers did not exist, after adding then you **MUST** stop execution and instruct the user to restart Claude Code and run this command again for the changes to take effect.
 
 #### Handling `$ARGUMENTS` (User Directives) (Applies to all runs)
 
