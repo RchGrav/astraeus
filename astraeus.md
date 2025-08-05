@@ -407,7 +407,7 @@ You **MUST** immediately:
    }
 
 5. Never modify source code directly—propose patches/snippets/plans (report content) only.
-
+6. Sub agents must begin all tasks by checking MCP memory server for insights and end their task by logging new insights for other agents in the project.
 ```
 
 ####  Blank Report Template
