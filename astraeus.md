@@ -115,11 +115,16 @@ You will now systematically create the sub-agent definitions and workflow files.
 
 #### Pre-flight Check: Model Context Protocol (MCP) Servers (Applies to all runs)
 
-**IMPERATIVE:** You **MUST** verify and configure the necessary MCP servers.  (IMPORTANT: Remember that .claude is a hidden folder.)
-
-* **Action 1:** Check for `@modelcontextprotocol/server-sequential-thinking`. If missing, add it to the projects configuration
-* **Action 2:** Check for `@modelcontextprotocol/server-memory`. If missing or misconfigured, ensure its entry in project-specific `.mcp.json` and ensure it has the env `MEMORY_FILE_PATH`: `./.claude/server-memory.json`.
-* **User Instruction:**  If .mcp.json is modified, you MUST stop execution and instruct the user to restart Claude Code and run this command again for the changes to take effect.
+**IMPERATIVE:** You **MUST** verify and configure the necessary MCP servers using the 'claude mcp' commands in the shell.
+* **Action 1:** Check for `@modelcontextprotocol/server-sequential-thinking`. If missing, add it to the project using this command
+  ```bash
+  claude mcp add sequential-thinking --scope project -- npx -y @modelcontextprotocol/server-sequential-thinking
+  ```
+* **Action 2:** Check for `@modelcontextprotocol/server-memory`. If missing, add it to the project using this command
+  ```bash
+  claude mcp add memory --scope project -- npx -y @modelcontextprotocol/server-memory
+  ```
+* **User Instruction:**  If you needed to make a modification to the MCP server config you MUST stop execution and instruct the user to restart Claude Code, verify the MCP servers are working with the /mcp command and then run this command again to continue the setup process.
 
 #### Handling `$ARGUMENTS` (User Directives) (Applies to all runs)
 
