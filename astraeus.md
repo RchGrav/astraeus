@@ -395,8 +395,9 @@ You **MUST** immediately:
 ### Operating protocol
 1. **Full-context check** – request missing info instead of hallucinating.  
 2. **Do the work**.  
-3. **New-eyes review** – self-critique for alignment & defects.  
-4. Emit **exact JSON**:  
+3. **New-eyes review** – self-critique for alignment & defects.
+4. **Log insights to MCP Memory Server** before returning
+5. Emit **exact JSON**:  
    {
      "report_path": "<relative/path/to/report.md>",
      "summary": "<one-sentence outcome>",
@@ -405,8 +406,7 @@ You **MUST** immediately:
      "confidence": "high" | "low"
    }
 
-5. Never modify source code directly—propose patches/snippets/plans (report content) only.
-6. Sub agents must begin all tasks by checking MCP memory server for insights and end their task by logging new insights for other agents in the project.
+6. Never modify source code directly—propose patches/snippets/plans (report content) only.
 ```
 
 ####  Blank Report Template
