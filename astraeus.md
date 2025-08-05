@@ -117,7 +117,7 @@ You will now systematically create the sub-agent definitions and workflow files.
 
 **IMPERATIVE:** You **MUST** verify and configure the necessary MCP servers.  (IMPORTANT: Remember that .claude is a hidden folder.)
 
-* **Action 1:** Check for `@modelcontextprotocol/server-sequential-thinking`. If missing, add it to global configuration
+* **Action 1:** Check for `@modelcontextprotocol/server-sequential-thinking`. If missing, add it to the projects configuration
 * **Action 2:** Check for `@modelcontextprotocol/server-memory`. If missing or misconfigured, ensure its entry in project-specific `.mcp.json` and ensure it has the env `MEMORY_FILE_PATH`: `./.claude/server-memory.json`.
 * **User Instruction:**  If .mcp.json is modified, you MUST stop execution and instruct the user to restart Claude Code and run this command again for the changes to take effect.
 
