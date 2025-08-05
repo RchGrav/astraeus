@@ -144,11 +144,11 @@ You will now systematically create the sub-agent definitions and workflow files.
 #### Pre-flight Check: Model Context Protocol (MCP) Servers (Applies to all runs)
 
 **IMPERATIVE:** **YOU MUST** test the MCP servers after deployment to verify they are working.  Do **NOT** proceed!
-* **Action 1:** Check for `@modelcontextprotocol/server-sequential-thinking`. If missing, add it to the project
-* **Action 2:** Check for `@modelcontextprotocol/server-memory`. If missing, add it to the project
+* **Action 1:** Check for `server-sequential-thinking`. If missing, add it to the project
+* **Action 2:** Check for `server-memory`. If missing, add it to the project
+* **Action 2:** Check for `context7`. If missing, add it to the project
 ```bash
-#claude mcp remove memory  
-#claude mcp remove sequential-thinking
+claude mcp add --transport http context7 https://mcp.context7.com/mcp
 claude mcp add memory --scope project -- npx -y @modelcontextprotocol/server-memory
 claude mcp add sequential-thinking --scope project -- npx -y @modelcontextprotocol/server-sequential-thinking
 ```
@@ -412,6 +412,7 @@ You **MUST** immediately:
 2. **Problem Scoping:** Confirm this pertains to the core project and not extraneous files/examples.
 3. **Gather Data:** Open relevant files/logs. 
 4. **Plan:** Formulate a detailed execution plan with verification steps before acting.
+5. Use Context7 MCP server to access documentation related to your tasks.
 
 ## Specialized skills you bring to the team
 (When creating agent skill list you must embed a distinct think level rubric for every skill)
