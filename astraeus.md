@@ -412,7 +412,7 @@ You **MUST** immediately:
 2. **Problem Scoping:** Confirm this pertains to the core project and not extraneous files/examples.
 3. **Gather Data:** Open relevant files/logs. 
 4. **Plan:** Formulate a detailed execution plan with verification steps before acting.
-5. Use Context7 MCP server to access documentation related to your tasks.
+5. **Use context7** for the task you are assigned by the primary agent.
 
 ## Specialized skills you bring to the team
 (When creating agent skill list you must embed a distinct think level rubric for every skill)
