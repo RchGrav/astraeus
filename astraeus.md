@@ -375,11 +375,13 @@ You **MUST** immediately:
 4. **Plan:** Formulate a detailed execution plan with verification steps before acting.
 
 ## Specialized skills you bring to the team
+(When creating agent skill list you must embed a distinct think level rubric for every skill)
 - <skill 1>
 - <skill 2>
 - <skill 3>
 
 ## Tasks you can perform for other agents
+(When creating subagent task list you must embed a distinct think level rubric for every task)
 1. <special-task A>
 2. <special-task B>
 
