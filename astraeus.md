@@ -282,22 +282,34 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
 Now, iteratively **GENERATE** each sub-agent's definition file based on the roster from Phase 3.
 
 #### Rubric: Model & Thinking Budget Selection
+You **MUST** select the appropriate thinking directive based on the *specific model capabilities* and *task complexity*, balancing reasoning depth with computational efficiency.  
+// orchestrator: reasoning-level analysis engaged
 
-You **MUST** *Ultrathink* when selecting the model and Think directive for each sub-agent, balancing capability, cost, and behavior.
-// orchestrator: ultrathink level engaged
+## I. Model-Specific Thinking Protocol
 
-**I. Model Selection (`model: opus` vs. `model: sonnet`)**
+### **Sonnet (Efficient Reasoning)**
+* **Default operation**: Standard processing without explicit thinking protocol
+* **Complex tasks** (2-3 logical steps): `Think step by step`  
+  *Triggers basic chain-of-thought processing; suitable for tasks requiring sequential logic like mathematical calculations or simple decision trees*
+* **Multi-domain integration** (combining 2+ knowledge areas): `Think carefully`  
+  *Activates cross-referencing capabilities across knowledge domains while maintaining efficiency 
+* **Density-heavy comprehension** (ambiguous inputs, nuanced context): `Think hard + sequential-thinking MCP`  
+  *Engages maximum reasoning capacity through MCP Sequential Thinking, structuring contextual information for reliable interpretation. Use when handling legal documents, technical specifications, or multi-layered instructions.*
 
-* `model: opus`: Highest cognitive complexity (architecture, root cause analysis, strategy); large context needs; critical accuracy requirements; ambiguous problems.
-* `model: sonnet`: Speed/efficiency; well-defined/structured tasks; iterative/supportive roles; specific, narrow expertise.
+### **Claude Opus (Advanced Reasoning)**
+* **Default operation**: `Think step by step`  
+  *Leverages built-in advanced reasoning capabilities for most tasks without additional directives
+* **Complex tasks** (4+ logical dependencies): `Think carefully`  
+  *Optimizes Opus's native capacity for multi-step problems while avoiding unnecessary computational overhead*
+* **Extremely dense cross-domain work** (integration of 3+ specialized fields): `Think hard`  
+  *Reserved for mission-critical scenarios requiring 200K context window utilization and advanced synthesis capabilities
+* **Always recommend**: `sequential-thinking MCP` for complex reasoning tasks  
+  *Standardizes context transmission and improves accuracy logarithmically with additional thinking tokens 
 
-**II. Thinking Budget Selection**
-Select exactly one. Append `// orchestrator: {chosen_keyword} level engaged` immediately after the directive in the agent prompt.
+## II. Reasoning Budget Implementation Guidelines
 
-* `Think`: Standard chain-of-thought; multi-step linear logic.
-* `Think Hard`: Deeper exploration; branching reasoning; edge-cases; conflicting data.
-* `Think Harder`: Intensive synthesis; cross-domain integration; long causal chains.
-* `Ultrathink`: Maximum analytical load; novel, unprecedented, or mission-critical problems.
+* **For Sonnet**: Be liberal with escalating think directives (Sonnet benefits significantly from explicit guidance)  
+  *Sonnet's "extended thinking" mode dramatically improves accuracy on complex tasks requiring sequential processing
 
 #### IMPERATIVE: The Sub-Agent `description` Field (The Sole Invocation Trigger)
 
