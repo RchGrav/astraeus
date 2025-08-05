@@ -143,7 +143,7 @@ You will now systematically create the sub-agent definitions and workflow files.
 
 #### Pre-flight Check: Model Context Protocol (MCP) Servers (Applies to all runs)
 
-**IMPERATIVE:** You **MUST** verify and configure the necessary MCP servers using the 'claude mcp' commands in the shell.
+**IMPERATIVE:** **YOU MUST** test the MCP servers after deployment to verify they are working.  Do **NOT** proceed!
 * **Action 1:** Check for `@modelcontextprotocol/server-sequential-thinking`. If missing, add it to the project
 * **Action 2:** Check for `@modelcontextprotocol/server-memory`. If missing, add it to the project
 ```bash
@@ -189,7 +189,6 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
    * `.gitignore` to understand excluded content
 
 2. **Repository Context Expert Persona Activation:**
-   // orchestrator: ultrathink level engaged
    * "As a Senior Project Archaeologist with 15 years of experience, I examine project DNA through documentation, code structure, and development patterns to determine the true purpose"
    * "Core project identification must follow reporting principles: focus on business impact first, technical details second"
 
@@ -264,10 +263,18 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
 
 ### Phase 3: Strategic Role & Workflow Planning
 
-**Goal:** Finalize the roster of deeply-scoped sub-agent roles, ensuring full-spectrum coverage of the core project *only*.
+**Goal:** Finalize the roster of deeply-scoped sub-agent roles, ensuring full-spectrum coverage.
+
+*IMPORTANT*
+1. You **MUST** really take a step back here and think of these agents working as a team and determine ways they can collaborate.
+2. You **MUST** think hard and come up with a list of tasks that will benefit by chaining agents together.
+3. You **MUST** record in the memory MCP server these chained agent workflow examples for ALL key workflows which will see great benefit from a chained approach.
+4. You **MUST** use the sequential-thinking MCP server for creating workflow chains and simulate these flows, this will inform you how to properly populate the Next Task / Next Agent table in every sub agent definition file.
+(Completion of these steps diligently will not only enable efficient teamwork but will also activate new emergent workflows and use cases on demand and will pay off more than you can imagine!  take Pride in this work!)
+
+IMPORTANT: Do not load up the CLAUDE.md file with agent lists, the primary agent can already see this info on demand, instead inform the CLAUDE.md file to understand these workflows have been embedded into the fabric of the subagents design and to activate a workflow chain the primary agent must tell the first agent to act as the first in a chain of agents then when complete ask which agent this work goes to next.
 
 * **Workflow Expert Persona Activation:** 
-  // orchestrator: ultrathink level engaged w/ sequential thinking mcp server for this critical step which may take extreme focus for workflows and agent alignments
   * "As a Workflow Design Specialist with 20 years in process engineering, I design interaction patterns that maximize parallel execution while minimizing communication overhead"
 
 * **Compile and Refine Role List:** Start with the Broad Scoped Archetypes. *Ultrathink* if any other specialists are needed based on the Phase 1 analysis. **Crucially:**
