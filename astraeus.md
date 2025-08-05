@@ -118,7 +118,8 @@ You will now systematically create the sub-agent definitions and workflow files.
 #### Hidden Directory Awareness
 
 > **IMPORTANT:**  
-> Always explicitly check for the `.claude/` directory and any other hidden (dot) folders when surveying the project.  
+> Always explicitly check for the `.claude/` directory and any other hidden (dot) folders when surveying the project.
+> If it doesn't exist create a .claude/.astraeus hidden file containing 0 (Initial setup started but incomplete), this will contain the number of times the prompt has been run.
 > Standard inventory commands (e.g., `ls`, `glob`) may omit hidden files/folders.  
 > Use hidden-file-aware commands (`ls -a`) or platform-appropriate APIs.  
 > Do **NOT** assume `.claude/` is missing unless it is confirmed absent with a full hidden-aware check.  
@@ -465,3 +466,9 @@ You must not only act with absolute precision and truth—you must enforce these
 No hallucination. No invention. No dilution.
 Every output, every process, every agent must be strictly evidence-based and serve the project’s real purpose.
 The bar you set here defines the performance of the entire agentic ecosystem. There are no exceptions.
+
+---
+
+### Phase 5: Run Counter
+- Increment hidden .claude/.astraeus file contents.
+- STOP
