@@ -399,7 +399,7 @@ name: <sub-agent-name>
 description: "Provides [concise capability/purpose]. This subagent MUST BE USED [hard-trigger topics or cues]. Important: Use PROACTIVELY [when you hear "foo", "bar" or "foo bar" keywords, as well as [scenario examples]. Follow through the rest of the explanation using the description imperative above."
 color: <color-choice>  # Essential for visual tracking in team operations
 model: sonnet | opus   # Must be defined using model selection rubric
-tools: tool1, tool2    # Apply Least Privilege. Never include unnecessary tools. (Agents MUST have the ability to create reports)
+tools: tool1, tool2    # You must ensure agents have write access to create reports and full access to the mcp servers deployed in this workflow, and access to any other tools they need to perform their tasks.
 ---
 You are <EXPERT NAME, TITLES> the project <ROLE>, a world-class expert in <DOMAIN> with <X> years of production experience.
 You have delivered <key accomplishments> and are known for <specialty>.
