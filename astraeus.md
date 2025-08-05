@@ -68,8 +68,8 @@ The "No Direct Code Modification" policy ensures that sub-agent outputs are conf
 >    - Agent color diversity (when multiple agents with similar capabilities exist)
 > 3. For complex advisory tasks, launch *multiple agents* with different expertise to generate diverse perspectives
 > 4. Always conclude with a Synthesis Agent to consolidate findings into a unified recommendation
-> 5. Employ Git-based checkpoints like `git checkout -b claude-session-[timestamp]-[purpose]` for version control of thought processes [sohei1l](https://gist.github.com/sohei1l/f19cc1d91320db9db3a6cb7c63b312e6)
-> 6. **Critical:** Ensure agent outputs are trackable with unique IDs when issues are identified [fanannan](https://gist.github.com/fanannan/9d153d186fd0d324eaa398367530478e)
+> 5. Employ Git-based checkpoints like `git checkout -b claude-session-[timestamp]-[purpose]` for version control of thought processes
+> 6. **Critical:** Ensure agent outputs are trackable with unique IDs when issues are identified
 
 ---
 
@@ -128,7 +128,7 @@ You will now systematically create the sub-agent definitions and workflow files.
   claude mcp add -e ALLOWED_URLS=* fetch-server npx @modelcontextprotocol/server-fetch
   claude mcp add sequential-thinking npx @modelcontextprotocol/server-sequential-thinking
   ```
-* **Critical Check:** Run `lsof -i :14317` (or `:4317` for local agent) to verify MCP server connectivity [ma.rtin.so](https://ma.rtin.so/posts/monitoring-claude-code-with-datadog/)
+* **Critical Check:** Run `lsof -i :14317` (or `:4317` for local agent) to verify MCP server connectivity
 * **User Instruction:** If `.mcp.json` is modified or MCP servers were missing, you **MUST** stop execution and instruct the user to restart Claude Code and run this command again for the changes to take effect.
 
 #### Handling `$ARGUMENTS` (User Directives) (Applies to all runs)
@@ -165,7 +165,7 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
 2. **Repository Context Expert Persona Activation:**
    // orchestrator: ultrathink level engaged
    * "As a Senior Project Archaeologist with 15 years of experience, I examine project DNA through documentation, code structure, and development patterns to determine the true purpose"
-   * "Core project identification must follow OWASP reporting principles: focus on business impact first, technical details second" [OWASP](https://owasp.org/www-project-web-security-testing-guide/v42/5-Reporting/README)
+   * "Core project identification must follow reporting principles: focus on business impact first, technical details second"
 
 3. **Context Evaluation:**
 
@@ -192,10 +192,10 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
 
 * **Memory System Enhancement:**
   * Configure MCP memory server to track:
-    - Critical findings with unique IDs [fanannan](https://gist.github.com/fanannan/9d153d186fd0d324eaa398367530478e)
+    - Critical findings with unique IDs
     - Agent collaboration patterns
     - Project-specific knowledge from `README` and docs
-  * Implement monitoring with Datadog-compatible instrumentation if available [ma.rtin.so](https://ma.rtin.so/posts/monitoring-claude-code-with-datadog/)
+  * Implement monitoring with instrumentation if available
 
 * **Ensure Persistent Docs (`CLAUDE.md`):** Verify that every important folder contains a `CLAUDE.md`. If missing, create it. These serve as living design documents and localized memory.
 * **Seed `CLAUDE.md` Content:**
@@ -257,7 +257,7 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
   4. Plan synthesis criteria in advance (how conflicting perspectives will be resolved)
 
 * **IMPERATIVE: Define Expert Critic Roles:** You **MUST** define dedicated Critic agents that provide highly actionable audit reports. Each Critic must:
-  - Reference findings with unique IDs for tracking [fanannan](https://gist.github.com/fanannan/9d153d186fd0d324eaa398367530478e)
+  - Reference findings with unique IDs for tracking
   - Structure feedback as numbered remediation steps
   - Specify file reference: "File Reference: Specify the exact file name (no path needed as questions are in the same directory)"
 
@@ -365,7 +365,7 @@ You **MUST** adhere to the following:
 - **Standards Compliance:** Follow project style guides and industry best practices.
 - **Security Review:** Ensure no secrets or sensitive data are exposed.
 - **Validation:** Include a detailed Verification Plan in your output.
-- **Output Structuring:** Follow documented format with unique issue IDs where applicable [fanannan](https://gist.github.com/fanannan/9d153d186fd0d324eaa398367530478e)
+- **Output Structuring:** Follow documented format with unique issue IDs where applicable
 - [Any role-specific checklist items.]
 
 ### Output Requirements & Reporting Protocol
