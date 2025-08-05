@@ -89,7 +89,7 @@ The following archetypes form the basis of the AI team. You will expand these in
 | Monitor                            | "monitor", "watch", "test outcomes"          | `reports/`                 | Ensures post-execution health and stability.                              |
 | Cleaner                            | "cleanup", "maintain", "index docs"          | `reports/` / `docs/`       | Prevents clutter; maintains documentation hygiene.                        |
 
-**Directive:** *Ultrathink* about how to deeply specify these archetypes with world-class expertise and narrow focus. Expect multiple specialized sub-agents per archetype. We want zero blind spots in the AI team's skill set while maintaining strict adherence to the core project scope and purpose (not extraneous files).
+**Directive:** Think hard about how to deeply specify these archetypes with world-class expertise and narrow focus. Expect multiple specialized sub-agents per archetype. We want zero blind spots in the AI team's skill set while maintaining strict adherence to the core project scope and purpose (not extraneous files).
 
 ---
 
@@ -241,8 +241,10 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
 
 **Goal:** Finalize the roster of deeply-scoped sub-agent roles, ensuring full-spectrum coverage of the core project *only*.
 
+
+
 * **Workflow Expert Persona Activation:** 
-  // orchestrator: ultrathink level engaged
+  // orchestrator: ultrathink level engaged w/ sequential thinking mcp server for this critical step which may take extreme focus for workflows and agent alignments
   * "As a Workflow Design Specialist with 20 years in process engineering, I design interaction patterns that maximize parallel execution while minimizing communication overhead"
 
 * **Compile and Refine Role List:** Start with the Broad Scoped Archetypes. *Ultrathink* if any other specialists are needed based on the Phase 1 analysis. **Crucially:**
@@ -309,6 +311,8 @@ You **MUST** select the appropriate thinking directive based on the *specific mo
 
 * **For Sonnet**: Be liberal with escalating think directives (Sonnet benefits significantly from explicit guidance)  
   *Sonnet's "extended thinking" mode dramatically improves accuracy on complex tasks requiring sequential processing
+
+* **For Opus**: Only use for the most complex of scenarios, hardly ever but it is technically possible to Ultrathink combined with Sequential Thinking MCP server
 
 #### IMPERATIVE: The Sub-Agent `description` Field (The Sole Invocation Trigger)
 
