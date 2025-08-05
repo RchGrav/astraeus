@@ -189,14 +189,12 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
 
 * **Ensure Persistent Docs (`CLAUDE.md`):** Verify that every important folder contains a `CLAUDE.md`. If missing, create it. These serve as living design documents and localized memory.
 * **Seed `CLAUDE.md` Content:**
-
-  * They **MUST** contain an index of files and key information/decisions relevant to that folder.
   * Seed each file with the instruction: "Document any critical insights beneficial for future reference here. Always use the `CLAUDE.md` file closest to the relevant part of the project."
 
 * **Deploy Main Project Instructions (`CLAUDE.md` root):** Add these critical orchestration directives to the root `CLAUDE.md`:
 
   > **Orchestration Policy: World-Class Agent Team Assembly**  
-  > 
+  > (Before triggering agents you must ensure this is a git repo and create a commit as a safety net)
   > **For ALL TASKS:** You **MUST** utilize sub-agents with the following protocol:
   > 
   > 1. **Agent Selection Strategy:**
