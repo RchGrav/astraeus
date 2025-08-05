@@ -354,7 +354,7 @@ The `description` field is the **ONLY** information the orchestrator uses for in
 
 Generate and save each definition to `.claude/agents/<name>.md`.
 
-````markdown
+```markdown
 ---
 name: <sub-agent-name>
 description: Provides [concise capability/purpose]. MUST BE USED for [hard-trigger topics or cues]; Use PROACTIVELY for [initiative cues or scenarios]. Expected Input: concise form of input. Expected Output: concise form of output
@@ -397,7 +397,6 @@ You **MUST** immediately:
 2. **Do the work**.  
 3. **New-eyes review** – self-critique for alignment & defects.  
 4. Emit **exact JSON**:  
-   ```json
    {
      "report_path": "<relative/path/to/report.md>",
      "summary": "<one-sentence outcome>",
@@ -405,10 +404,10 @@ You **MUST** immediately:
      "next_task": "<task-name>",
      "confidence": "high" | "low"
    }
-   ```
+
 5. Never modify source code directly—propose patches/snippets/plans (report content) only.
 6. Sub agents must begin all tasks by checking MCP memory server for insights and end their task by logging new insights for other agents in the project.
-````
+```
 
 ####  Blank Report Template
 (For use by sub agents, store in .claude/template/report.md so sub agents have access to this document)
