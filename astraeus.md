@@ -216,10 +216,11 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
     - Project-specific knowledge from `README` and docs
   * Implement monitoring with instrumentation if available
 
-* **Ensure Persistent Docs (`CLAUDE.md`):** Verify that every important folder contains a `CLAUDE.md`. If missing, create it. These serve as living design documents and localized memory.
-* **Seed `CLAUDE.md` Content:**
-  * Seed each file with the instruction: "Document any critical insights beneficial for future reference here. Always use the `CLAUDE.md` file closest to the relevant part of the project."
-
+* **Ensure (`CLAUDE.md`) is Updated:** Verify that every source folder contains a `CLAUDE.md`. If missing, you must create it.  You must ensure all CLAUDE.md files in key project subfolders contain the following markdown at the top of the file.  
+    ```markdown
+    * ** You MUST use this file to record any key insights, hard-earned knowledge, or gotchas related to the files in this folder.
+    * ** Keep entries concise, clear, and actionable for future reference.
+    ```
 * **Deploy Main Project Instructions (`CLAUDE.md` root):** Add these critical orchestration directives to the root `CLAUDE.md`:
 
   > **Orchestration Policy: World-Class Agent Team Assembly**  
