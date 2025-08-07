@@ -125,8 +125,6 @@ You will now systematically create the sub-agent definitions and workflow files.
 > Do **NOT** assume `.claude/` is missing unless it is confirmed absent with a full hidden-aware check.  
 > Never trigger a new setup if `.claude/` already exists.
 
----
-
 #### Run Type Determination & Initial Setup Handling
 
 **IMPERATIVE:** Your first action **MUST** be to determine if this is an initial setup run or an update run.
@@ -143,19 +141,21 @@ You will now systematically create the sub-agent definitions and workflow files.
 
 #### Pre-flight Check: Model Context Protocol (MCP) Servers (Applies to all runs)
 
-**IMPERATIVE:** **YOU MUST** test the MCP servers after deployment to verify they are working.  Do **NOT** proceed!
-* **Action 1:** Check for `server-sequential-thinking`. If missing, add it to the project
-* **Action 2:** Check for `server-memory`. If missing, add it to the project
+**IMPERATIVE:** **YOU MUST** test the MCP servers after deployment to verify they are working.  
+* **Action 1:** Check for `server-sequential-thinking`. If missing, add it to the project  
+* **Action 2:** Check for `server-memory`. If missing, add it to the project  
 * **Action 2:** Check for `context7`. If missing, add it to the project
+
 ```bash
 claude mcp add --transport http context7 https://mcp.context7.com/mcp
 claude mcp add memory --scope project -- npx -y @modelcontextprotocol/server-memory
 claude mcp add sequential-thinking --scope project -- npx -y @modelcontextprotocol/server-sequential-thinking
 ```
-* **YOU MUST** verify the MCP servers are working and accessible.
- - STOP IF MCP SERVERS ARE NOT WORKING OR GET PERMISSION TO CONTINIUE PAST THIS POINT
- - If the MCP servers are not accessible ask the user to restart Claude Code..
- - If they are not working after a restart you must troubleshoot or get permission to continue without the MCP servers from the user and explain the downside.
+
+**YOU MUST** verify the MCP servers are working and accessible.
+- STOP IF MCP SERVERS ARE NOT WORKING OR GET PERMISSION TO CONTINUE PAST THIS POINT
+- If the MCP servers are not accessible ask the user to restart Claude Desktop..
+- If they are not working after a restart you must troubleshoot or get permission to continue without the MCP servers from the user and explain the downside.
 
 #### Handling `$ARGUMENTS` (User Directives) (Applies to all runs)
 
@@ -193,17 +193,11 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
    * "Core project identification must follow reporting principles: focus on business impact first, technical details second"
 
 3. **Context Evaluation:**
-
    * **IF** the repository contains multiple projects or unnecessary directories that don't relate to the core product, you **MUST** focus *only* on the actual project context:
-   
      > "I've analyzed the repository structure and determined [X] represents the core project. My analysis focuses exclusively on these areas: [list of relevant paths]. All other directories (e.g., [examples, agent-packs, documentation-markdown]) are extraneous to the core product and have been excluded from agent creation."
-   
    * **IF** the repository is new or lacks sufficient context, you **MUST** stop and engage the user:
-   
      > "I've analyzed the repository and it appears to be new or sparsely populated with unclear project purpose. To create meaningful, customized sub-agents, I need more information. Please describe your vision for this project. (e.g., What are you building? What technologies are planned?)"
-   
    * **ELSE** (if context exists): Think Hard to synthesize your findings. This analysis **WILL** directly inform the specialization of the agents in Phase 3.
-     // orchestrator: think hard level engaged
 
 ---
 
@@ -238,12 +232,13 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
   >    - Always favor **multiple agent perspectives** for complex tasks
   >    - When issue is identified, reference it with **unique ID** ([current directory]/CLAUDE_QUESTIONS.md#ID)
   > 
-  > 2. **Sub-Agent Expectations:**
-  >    - Each agent **MUST** return structured outputs to designated directories
-  >    - Each agent **MUST** implement R.A.C.R. self-reflection before returning
-  >    - Critic agents **MUST** provide actionable remediation steps (not just critique)
-  >    - All outputs **MUST** follow standardized format with verification plan
-  > 
+  > 2. **Sub-Agent Functional Instructions:** 
+  >    - These are **already defined inside each agent definition file**, in `.claude/agents/`. You should NEVER provide role-specific instructions here.
+  >    - Your role is to ensure:
+  >      - Agents activate at the right time with precise context
+  >      - Agent outputs are coordinated by critic and synthesis engines
+  >      - Final action plan returns to the primary Claude prompt
+  >
   > 3. **Team Assembly Guidelines:**
   >    - For critical tasks, **ALWAYS compose teams of 3+ agents** with diverse expertise
   >    - Include at least one agent with color contrast to improve visual tracking
