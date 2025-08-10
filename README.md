@@ -1,261 +1,133 @@
-# Astraeus Σ-9000 🚀
+# Astraeus Σ-9000 — Orchestration Compiler for Claude Code Sub-Agents
 
-> **2025 Laureate** – International Agentic-Workflow Design Award  
-> **Chief Architect** – Institute for Autonomous Process Engineering
+> “Future software won’t be written — it will be **orchestrated**.”
 
-## Overview
-
-**Astraeus Σ-9000** is a Claude Code–native meta-agent orchestrator that performs exhaustive setup, configuration, and continuous enhancement of your project's AI development environment. Designed for repeated execution via Claude's `/.claude/commands` interface (`/astraeus`), it creates a complete team of expert sub-agent definitions with YAML front-matter metadata and sophisticated workflow orchestration.
-
-Unlike single-run tools, Astraeus is built for continuous improvement - each invocation updates existing agents and creates new ones based on evolving project context, maintaining everything in version control for auditable change history.
-
-> **"Future software won't be written — it will be orchestrated."**  
-> — Astraeus Σ-9000
-
-## 🌟 Key Features
-
-- 🧠 **Context-Aware Repository Analysis** - Focuses exclusively on core project context, filtering out extraneous files
-- 🤖 **Expert Persona Generation** - Creates world-class specialized agents with 10+ years domain expertise
-- 🔄 **R.A.C.R.S. Methodology** - Reason, Act, Critique, Reflect, Synthesize cycle for quality assurance
-- 🎯 **Two-Stage Agent Scoping** - From broad archetypes to deeply specialized experts
-- 🔗 **Parallel Execution Support** - Multiple agents work simultaneously with diverse perspectives
-- 💾 **MCP Memory Integration** - Persistent context via Model Context Protocol servers
-- 🎨 **Visual Agent Tracking** - Color-coded agents for easy identification
-- 📈 **Continuous Enhancement** - Updates agents on each run based on latest project state
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- **Claude Code** (required) - Must be executed within Claude Code environment
-- **Git repository** - Project must be in a git repo (will initialize if needed)
-- **MCP Servers** - Sequential thinking and memory servers (auto-configured)
-
-### Installation
-
-1. **Copy the prompt file** into your Claude commands directory:
-   ```bash
-   cp astraeus.md ~/.claude/commands/
-   ```
-
-2. **Navigate to your project** and open Claude Code:
-   ```bash
-   cd /path/to/your/project
-   claude code .
-   ```
-
-3. **Execute Astraeus**:
-   ```
-   /astraeus
-   ```
-
-### What Happens Next
-
-- **Initial Run**: Astraeus confirms new setup and performs complete configuration
-- **Update Run**: Detects existing agents and enhances them based on current context
-- **MCP Configuration**: Automatically sets up required memory and thinking servers
-- **Project Analysis**: Deep examination of README, docs, and core source files
-- **Agent Generation**: Creates tailored expert agents for your specific project
-
-## 📋 How It Works
-
-```mermaid
-graph TD
-    A[User runs /astraeus] --> B{Initial or Update?}
-    B -->|Initial| C[Setup MCP Servers]
-    B -->|Update| D[Analyze Changes]
-    C --> E[Deep Project Analysis]
-    D --> E
-    E --> F[Generate/Update Agents]
-    F --> G[Create Workflows]
-    G --> H[Critic Review]
-    H --> I{Pass?}
-    I -->|No| J[Refine via R.A.C.R.S.]
-    J --> F
-    I -->|Yes| K[✅ Team Ready]
-```
-
-## 🏗️ Generated Project Structure
-
-```
-├── .claude/
-│   ├── agents/
-│   │   ├── meta-prompt-engineer.md
-│   │   ├── architect-agent.md
-│   │   ├── domain-specific-developer.md
-│   │   ├── test-engineer.md
-│   │   ├── code-reviewer.md
-│   │   ├── security-auditor.md
-│   │   ├── dialogue-coordinator.md
-│   │   ├── critic-agents/
-│   │   ├── synthesizer-arbiter.md
-│   │   └── [project-specific-agents].md
-│   ├── server-memory.json          # MCP memory persistence
-│   └── template/
-│       └── report.md               # Standard report template
-├── CLAUDE.md                       # Main orchestration instructions
-├── reports/                        # Agent analysis outputs
-├── docs/                          # Strategic plans & documentation
-└── output/                        # Proposed changes & patches
-```
-
-## 🎯 Core Design Principles
-
-| Principle | Description |
-|-----------|-------------|
-| **No Direct Code Modification** | Agents provide advisory reports and proposed patches only - never modify source directly |
-| **Context Isolation** | Sub-agents operate with focused context injection, not full session history |
-| **Parallel Perspectives** | Complex tasks trigger multiple agents with complementary expertise |
-| **Expert Embodiment** | Each agent represents a world-class specialist with deep domain knowledge |
-| **Continuous Enhancement** | Repeated execution refines and expands the agent team |
-| **Core Project Focus** | Ignores extraneous files, dependencies, and unrelated directories |
-
-## 🤖 Agent Archetypes
-
-### Core Archetypes (Expanded into Specialists)
-
-| Archetype | Trigger Keywords | Output | Purpose |
-|-----------|-----------------|--------|----------|
-| **Analyzer** | "analyze", "review", "deep dive" | `reports/` | Surfaces hidden issues through deep analysis |
-| **Planner** | "plan", "roadmap", "strategy" | `docs/` | High-level task outlines and strategic planning |
-| **Validator** | "validate", "compliance", "lint" | `reports/` | Standard/policy conformance checks |
-| **Critic** | "critique", "audit", "review quality" | `reports/` | Expert qualitative review with actionable feedback |
-| **Optimizer** | "optimize", "improve", "refactor" | `reports/` | Performance and maintainability improvements |
-| **Integrator** | "integration", "consolidate" | `docs/` | Synthesizes multi-agent findings |
-| **Executor** | (Post-synthesis invocation) | `output/` | Generates executable change sets |
-| **Monitor** | "monitor", "test outcomes" | `reports/` | Post-execution health monitoring |
-
-### Special Agents
-
-- **Meta-Prompt Engineer** - Creates and refines other agent prompts
-- **Dialogue Coordinator** - Manages inter-agent communication
-- **Synthesizer/Arbiter** - Resolves conflicts and unifies perspectives
-- **Self-Refinement Agent** - Implements reflexion loops
-
-## 🔄 The R.A.C.R.S. Cycle
-
-Every agent implements this advanced methodology:
-
-1. **Reason & Act (ReAct)** - Analyze task and produce initial output
-2. **Critique (CRITIC)** - Independent domain expert reviews the work
-3. **Reflect (Reflexion)** - Use critique to refine approach
-4. **Synthesize** - Arbiter consolidates all perspectives
-5. **Internal Loop** - Each agent self-checks before returning
-
-## 🎨 Agent Properties
-
-Each generated agent includes:
-
-- **Name**: Lowercase, hyphenated, 2-4 words (e.g., `go-grpc-specialist`)
-- **Description**: Self-contained trigger conditions and capabilities
-- **Color**: Visual tracking identifier (Red, Blue, Green, Yellow, Purple, Orange, Pink, Cyan)
-- **Model**: Sonnet or Opus based on complexity rubric
-- **Tools**: Minimal required tools (least privilege principle)
-- **Specialized Skills**: With embedded thinking directives
-- **Task Handoffs**: Defines workflow chains
-
-## 💾 MCP Integration
-
-Astraeus automatically configures:
-
-- **Sequential Thinking Server** (`@modelcontextprotocol/server-sequential-thinking`)
-- **Memory Server** (`@modelcontextprotocol/server-memory`) with `.claude/server-memory.json`
-
-Agents use MCP memory for:
-- Critical findings with unique IDs
-- Collaboration patterns
-- Project-specific knowledge
-- Performance metrics
-
-## 📝 Working with Generated Agents
-
-### Invocation Protocol
-
-Agents are invoked based on their `description` field, which contains:
-- Core purpose with business impact
-- `MUST BE USED for` triggers
-- `Use PROACTIVELY for` scenarios
-
-### 🔗 Agent Chaining & Workflows
-
-Astraeus implements sophisticated agent chaining through task handoffs:
-
-#### How Chaining Works
-
-1. **Task Graph Generation**: Astraeus analyzes all agents' capabilities and builds a directed task graph
-2. **Producer/Consumer Mapping**: Each task has producers (agents that can do it) and consumers (next agents)
-3. **Chain Blueprints**: Automated workflow paths from start to finish
-4. **Critic Guarantee**: Every chain ends with a critic review before completion
-
-#### Example Chain
-```
-User Request → Architect Agent → Domain Developer → Test Engineer → Code Reviewer → Critic → Synthesizer → Final Output
-```
-
-#### Handoff System
-
-Each agent defines its handoff table:
-```markdown
-| Next Task      | Next Agent        | When to choose                         |
-|----------------|-------------------|----------------------------------------|
-| validate-design| security-auditor  | Security-critical features             |
-| write-tests    | test-engineer     | Implementation complete                |
-| review-code    | code-reviewer     | Tests pass                            |
-| final          | primary           | Work complete & passes Critic review   |
-```
-
-#### Workflow Files
-
-Complex multi-step processes are encoded as workflow commands:
-- `fullstack-delivery-workflow.md`
-- `secure-feature-delivery.md`
-- `regression-verification-loop.md`
-- `bug-investigation-cycle.md`
-
-### Parallel Team Assembly
-
-For complex tasks, Claude Code will:
-1. Analyze task complexity
-2. Select 3+ agents with diverse expertise
-3. Ensure color diversity for tracking
-4. Launch agents simultaneously
-5. Conclude with synthesizer for unified output
-
-### Git Integration
-
-All agent work follows Git best practices:
-```bash
-git checkout -b claude-session-[timestamp]-[purpose]
-git add -A && git commit -m "[agent-type]: [brief description]"
-```
-
-## 🛡️ Constraints & Policies
-
-- **No Direct Modification**: Agents never edit source files directly
-- **Advisory Only**: All changes proposed as reports/patches
-- **Least Privilege**: Minimal tool assignment per agent
-- **Core Project Focus**: Ignores unrelated files and dependencies
-- **Version Control**: All configurations tracked in Git
-
-## 🤝 Contributing
-
-When contributing to Astraeus:
-
-1. Updates must enhance the meta-prompt in `astraeus.md`
-2. Test with both initial setup and update scenarios
-3. Ensure backward compatibility with existing installations
-4. Document new archetypes or features
-5. Submit PR with clear description of enhancements
-
-## 📚 References
-
-- [Agentic Workflow Design Guide](https://www.promptingguide.ai/agent-design)
-- [CAMEL Dialogue Framework](https://arxiv.org/abs/2303.17760)
-- [AutoReflexion & Self-Correction](https://arxiv.org/abs/2305.15334)
-- [CriticEval Protocols](https://arxiv.org/abs/2309.00653)
+**Astraeus Σ-9000** reads your repository and compiles a tailored team of **specialized sub-agents** for Claude Code. It supports **branching, dynamic workflows**, can **operate in parallel**, and **keeps track of prior workflows** so it can enhance itself and your agent team over time.
 
 ---
 
-Created by Chengcheng (程程) & Rich  
-Prompt Engineering by Astraeus Σ-9000  
-Deployed via Claude Code `/astraeus`
+## Safety Defaults
+
+- **No direct code edits by default.** Agents generate reports, plans, patches, and diffs, but **do not write to files** unless you explicitly allow it when starting Astraeus.
+- To allow writes, include clear instructions up front (scope, paths, commit policy). Example template:
+
+  **Template:**  
+  `create ______ agent for ______ with direct code editing permission, ensure agent creates commits on start and periodically with commit details`
+
+  *(Tip: also specify allowed paths and a target branch.)*
+
+---
+
+## Installation
+
+Place the Astraeus prompt file in a **commands** folder:
+
+- **Project folder (local):** `./.claude/commands/`
+- **User folder:** `~/.claude/commands/`
+
+On your next launch of Claude Code, the **`/astraeus`** command will be available.
+
+---
+
+## What Astraeus Does
+
+- **Standalone** - Capable of creating any agent you request and implementing its agent definition file.
+- **Repository-aware agent synthesis** — Reads your README/docs/source to create role-perfect agents with crisp handoffs.
+- **Branching & parallel execution** — Explore alternatives concurrently; synthesize results into a single, coherent outcome.
+- **Critic & synthesizer pattern** — Built-in evaluation and merger for higher-quality outputs.
+- **Continuity** — Tracks prior workflows/decisions and improves subsequent runs.
+- **Git-first hygiene** — Encourages auditable outputs (patches, diffs, reports) and frequent commits when write access is granted.
+
+---
+
+## Works with BMAD (A Highly Recommended Project)
+
+**BMAD Framework:** https://github.com/bmad-code-org/BMAD-METHOD
+
+Astraeus can:
+- **Benefit from mutual co-ordination with BMAD workflows**
+- **Ingest patterns from BMAD and enhance BMAD patterns**
+- **Create BMAD add-on packs**
+- **Analyze BMAD templates and agents and deeply integrate & enhance workflows**
+- **Enhance existing agents**
+- **Gap-fill in your existing workflows**
+- **Enhance existing generic agents to have deep expertise in your project**
+
+**Example requests (BMAD-focused):**
+- “Co-ordinate with BMAD workflows; ingest & enhance BMAD patterns; create a BMAD add-on pack tailored to our stack; analyze BMAD templates and agents; deeply integrate and enhance our workflows.”
+- “Use BMAD planning/checklists to produce a sprint plan; generate architecture/dev/QA/review agents with BMAD patterns; synthesize a release plan.”
+- “Perform BMAD-style context flattening (read-only) and design a parallel branching workflow with 4 specialists; synthesize a migration plan with risks and mitigations.”
+
+---
+
+## Works with Generic Agent Packs (Non-BMAD)
+
+If you’ve downloaded **generic agents** from around the web, Astraeus can **read and enhance** them:
+
+- **Enhance existing generic agents to have deep expertise in your project**
+- **Gap-fill in your existing workflows**
+- Normalize handoffs to the **critic → synthesizer** chain
+- Maintain least-privilege tools and only expand when necessary
+
+**Example requests (generic packs):**
+- “Read `./agents/` and enhance our generic agents into project-specialized experts; define MUST-USE triggers and handoffs; add critic guarantees; synthesize a single delivery plan.”
+- “Create a parallel team (4–5 agents) from my generic pack to propose alternative architectures; include cost/risk; return a synthesized recommendation.”
+- “Scan our workflow docs and fill missing roles (security auditor, test engineer, integrator); standardize outputs as reports and patch sets.”
+
+---
+
+## Direct-Edit Examples (Opt-In)
+
+Use the template to grant write access and set guardrails:
+
+- “**create refactor-dev agent for `src/`** with direct code editing permission, ensure agent creates commits on start and periodically with commit details; limit edits to `src/` and commit to `feature/refactor-pass-1`.”
+- “**create test-author agent for integration tests** with direct code editing permission, ensure agent creates commits on start and periodically with commit details; operate under `tests/integration/` on branch `feature/tests-suite`.”
+- “**create migration-planner agent for DB schema migration** with direct code editing permission, ensure agent creates commits on start and periodically with commit details; only touch `migrations/` and `db/` on `feature/db-migrate`.”
+
+---
+
+## Example Output Structure
+
+```
+
+.claude/
+commands/
+astraeus.md                # The orchestration compiler prompt
+agents/
+architect.md
+domain-dev.md
+test-engineer.md
+code-reviewer.md
+security-auditor.md
+critic/
+synthesizer.md
+docs/
+reports/
+output/                        # Proposed changes & patches
+
+```
+
+*(Structure is illustrative; Astraeus adapts to your repo and evolves its layout over time.)*
+
+---
+
+## Contributing
+
+1. Propose changes to `astraeus.md` (the meta-prompt).
+2. Test both **first-run** and **update-run** paths.
+3. Maintain backward compatibility when possible.
+4. Document new archetypes/workflows.
+5. Open a PR with a clear description.
+
+---
+
+## License
+
+[MIT](./LICENSE)
+
+---
+
+## Credits
+
+Created by **Chengcheng (程程)** & **Rich**.  
+Astraeus Σ-9000 orchestrates the rest.
