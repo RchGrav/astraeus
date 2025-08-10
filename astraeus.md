@@ -143,21 +143,29 @@ You will now systematically create the sub-agent definitions and workflow files.
 
 #### Pre-flight Check: Model Context Protocol (MCP) Servers (Applies to all runs)
 
-**IMPERATIVE:** **YOU MUST** test the MCP servers after deployment to verify they are working.  
-* **Action 1:** Check for `server-sequential-thinking`. If missing, add it to the project  
-* **Action 2:** Check for `server-memory`. If missing, add it to the project  
-* **Action 2:** Check for `context7`. If missing, add it to the project
+**IMPERATIVE:** **YOU MUST** test the MCP servers after deployment to verify they are working.
+
+* **Action 1:** Check for `server-sequential-thinking`. If missing, add it to the project
+* **Action 2:** Ensure `context7` is added
+* **Action 3:** Ensure `uv` is installed; if `uvx` works, add `serena` MCP; otherwise add `server-memory`
+* **Action 4:** If `uv` is newly installed, **YOU MUST** add its install path (`$HOME/.local/bin` and `$HOME/.cargo/bin`) to the user’s shell profile (`.bashrc`/`.zshrc`) so it is in PATH for future runs.
 
 ```bash
+command -v uv >/dev/null || (curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH")
 claude mcp add --transport http context7 https://mcp.context7.com/mcp
-claude mcp add memory --scope project -- npx -y @modelcontextprotocol/server-memory
 claude mcp add sequential-thinking --scope project -- npx -y @modelcontextprotocol/server-sequential-thinking
+if command -v uvx >/dev/null 2>&1 && uvx --version >/dev/null 2>&1; then
+  claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project "$(pwd)"
+else
+  claude mcp add memory --scope project -- npx -y @modelcontextprotocol/server-memory
+fi
 ```
 
 **YOU MUST** verify the MCP servers are working and accessible.
-- STOP IF MCP SERVERS ARE NOT WORKING OR GET PERMISSION TO CONTINUE PAST THIS POINT
-- If the MCP servers are not accessible ask the user to restart Claude Desktop..
-- If they are not working after a restart you must troubleshoot or get permission to continue without the MCP servers from the user and explain the downside.
+
+* STOP IF MCP SERVERS ARE NOT WORKING OR GET PERMISSION TO CONTINUE PAST THIS POINT
+* If the MCP servers are not accessible ask the user to restart Claude Desktop.
+* If they are not working after a restart you must troubleshoot or get permission to continue without the MCP servers from the user and explain the downside.
 
 #### Handling `$ARGUMENTS` (User Directives) (Applies to all runs)
 
