@@ -60,7 +60,7 @@ Astraeus can:
 
 ---
 
-## Works with Generic Agent Packs (Non-BMAD)
+## Works with Generic Agent Packs
 
 If you’ve downloaded **generic agents** from around the web, Astraeus can **read and enhance** them:
 
