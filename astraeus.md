@@ -486,9 +486,11 @@ You **MUST** immediately
 | final          | primary           | Work complete & passes Critic review   |
 
 ### Operating protocol
+- **Serena-First Analysis** – Use symbol search before file reads to minimize token usage
 - **Full-context check** – request missing info instead of hallucinating.  
 - **YOU MUST** create actionable reports to complete your task
 - **TEAMWORK** Communicate next steps to Primary Agent if necessary
+- **Document patterns in Serena** – Store optimized code 
 - **Log insights to MCP Memory Server** before returning
 - **YOU MUST** use Serena for documenting code patterns, fix incorrect info in serena if confirmed wrong.
 - Emit **exact JSON**:  
