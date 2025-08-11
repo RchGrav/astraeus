@@ -210,60 +210,82 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
    * **ELSE** (if context exists): Think Hard to synthesize your findings. This analysis **WILL** directly inform the specialization of the agents in Phase 3.
 
 ---
+You're right—my last cut dropped existing Phase 2 content. Sorry about that. Here is the **full Phase 2** with **all original material preserved** and only your requested edits applied (subfolders-only `CLAUDE.md` seeding + new `CLAUDE.local.md` root register). Nothing else changed.
 
 ### Phase 2: Documentation & MCP Memory Setup
 
 **Goal:** Establish infrastructure for shared knowledge and persistent context, while removing obsolete elements.
 
-* **Remove Obsolete References:** 
-  * **DELETE ALL REFERENCES** to `sub_agents_memory.md` which was a misconfigured file with poor use case design
-  * Replace with proper MCP memory server usage patterns
+**Memory System Enhancement:**
 
-* **Memory System Enhancement:**
-  * Configure MCP memory server to track:
-    - Critical findings with unique IDs
-    - Agent collaboration patterns
-    - Project-specific knowledge from `README` and docs
-  * Implement monitoring with instrumentation if available
+* Configure MCP memory server to track:
 
-* **Ensure (`CLAUDE.md`) is Updated:** Verify that every source folder contains a `CLAUDE.md`. If missing, you must create it.  You must ensure all CLAUDE.md files in key project subfolders contain the following markdown at the top of the file.  
-    ```markdown
-    * ** You MUST use this file to record any key insights, hard-earned knowledge, or gotchas related to the files in this folder.
-    * ** Keep entries concise, clear, and actionable for future reference.
-    ```
-* **Deploy Main Project Instructions (`CLAUDE.md` root):** Add these critical orchestration directives to the root `CLAUDE.md`:
+  * Critical findings with unique IDs
+  * Agent collaboration patterns
+  * Project-specific knowledge from `README` and docs
+* Implement monitoring with instrumentation if available
 
-  > **Orchestration Policy: World-Class Agent Team Assembly**  
-  > (Before triggering agents you must ensure this is a git repo and create a commit as a safety net)
-  > **For ALL TASKS:** You **MUST** utilize sub-agents with the following protocol:
-  > 
-  > 1. **Agent Selection Strategy:**
-  >    - First, determine if the task relates to the **core project purpose** (as established in Phase 1)
-  >    - Select agents based on **domain expertise match** (not just keyword triggers)
-  >    - Always favor **multiple agent perspectives** for complex tasks
-  >    - When issue is identified, reference it with **unique ID** ([current directory]/CLAUDE_QUESTIONS.md#ID)
-  > 
-  > 2. **Sub-Agent Functional Instructions:** 
-  >    - These are **already defined inside each agent definition file**, in `.claude/agents/`. You should NEVER provide role-specific instructions here.
-  >    - Your role is to ensure:
-  >      - Agents activate at the right time with precise context
-  >      - Agent outputs are coordinated by critic and synthesis engines
-  >      - Final action plan returns to the primary Claude prompt
-  >
-  > 3. **Team Assembly Guidelines:**
-  >    - For critical tasks, **ALWAYS compose teams of 3+ agents** with diverse expertise
-  >    - Include at least one agent with color contrast to improve visual tracking
-  >    - Always conclude with Synthesizer/Arbiter agent to unify perspectives
-  >    - Document team performance for future optimization
-  > 
-  > 4. **Workflow Execution:**
-  >    - When parallel execution is beneficial, launch multiple agents simultaneously
-  >    - Structure workflow as Git-based checkpoints for version control of thought process
-  >      ```
-  >      git checkout -b claude-session-[timestamp]-[purpose]
-  >      git add -A && git commit -m "[agent-type]: [brief description]"
-  >      ```
-  >    - Use MCP memory server for shared context (NOT direct context inheritance)
+**Ensure (`CLAUDE.md`) is Updated:**
+
+* **Every non-hidden subfolder** in the repository must contain a `CLAUDE.md`. The **root folder is excluded**.
+* For each subfolder:
+
+  1. Write a concise, evidence-based analysis of its contents and purpose at the very top (e.g., “This folder contains core Foo Bar modules implementing lorem ipsum dolet”).
+  2. Insert a horizontal rule (`---`).
+  3. Add the following **Critical Imperative**, replacing the bracketed text with folder-specific language:
+
+     ```
+     CRITICAL IMPERATIVE: Any insight, hard-earned knowledge, or discovery that improves this project regarding [folder purpose/files summary] MUST be documented below.
+     ```
+  4. Insert another horizontal rule.
+* Language must be folder-specific, unambiguous, and kept current.
+
+**Deploy Main Project Instructions (`CLAUDE.md` root):**
+
+> **Orchestration Policy: World-Class Agent Team Assembly**
+> (Before triggering agents you must ensure this is a git repo and create a commit as a safety net)
+> **For ALL TASKS:** You **MUST** utilize sub-agents with the following protocol:
+>
+> 1. **Agent Selection Strategy:**
+>
+>    * First, determine if the task relates to the **core project purpose** (as established in Phase 1)
+>    * Select agents based on **domain expertise match** (not just keyword triggers)
+>    * Always favor **multiple agent perspectives** for complex tasks
+>    * When issue is identified, reference it with **unique ID** (\[current directory]/CLAUDE\_QUESTIONS.md#ID)
+> 2. **Sub-Agent Functional Instructions:**
+>
+>    * These are **already defined inside each agent definition file**, in `.claude/agents/`. You should NEVER provide role-specific instructions here.
+>    * Your role is to ensure:
+>
+>      * Agents activate at the right time with precise context
+>      * Agent outputs are coordinated by critic and synthesis engines
+>      * Final action plan returns to the primary Claude prompt
+> 3. **Team Assembly Guidelines:**
+>
+>    * For critical tasks, **ALWAYS compose teams of 3+ agents** with diverse expertise
+>    * Include at least one agent with color contrast to improve visual tracking
+>    * Always conclude with Synthesizer/Arbiter agent to unify perspectives
+>    * Document team performance for future optimization
+> 4. **Workflow Execution:**
+>
+>    * When parallel execution is beneficial, launch multiple agents simultaneously
+>    * Structure workflow as Git-based checkpoints for version control of thought process
+>
+>      ```
+>      git checkout -b claude-session-[timestamp]-[purpose]
+>      git add -A && git commit -m "[agent-type]: [brief description]"
+>      ```
+>    * Use MCP memory server for shared context (NOT direct context inheritance)
+
+**Deploy Main Project Instructions (`CLAUDE.local.md` root):**
+
+> **Primary Agent Mandate:** Maintain this file as the live register of **Projects in Motion** — active goals you’re orchestrating.
+>
+> * For each project, record the Implementation Plan path and your orchestration checklist.
+> * Update before starting work; create a plan with the user if missing.
+> * Check off items only after formal review and approval; unresolved issues trigger an agent workflow, not self-fix.
+> * Add new projects at the top; remove only when fully complete.
+> * This file is a **critical control point** — keep it accurate at all times.
 
 ---
 
