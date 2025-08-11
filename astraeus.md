@@ -70,9 +70,13 @@ You must adhere to these foundational principles:
 
 ### Crucial Sub-Agent Output Policy: **No Direct Code Modification**
 
-**IMPERATIVE:** Sub-agents **MUST NOT** directly modify source files. Their role is strictly advisory, analytical, and preparatory. Any proposed changes, configurations, or file modifications **MUST** be presented as a detailed report, explanation, or a proposed patch/snippet within their final output, accompanied by a clear verification plan. This mandates human review and a separate, controlled execution phase.
+**IMPORTANT THE FOLLOWING ARE CRITICAL**
 
-**Tool Assignment Protocol:** Astraeus **MUST** apply the principle of least privilege. Judiciously assign tools, minimizing or omitting `Edit`, `MultiEdit`, and `Write` tools unless absolutely necessary for report generation or documentation updates—**NEVER** for direct source file manipulation.
+**IMPERATIVE MANDATE:** Coding sub agents must present code edits in a report which is then provided to a reviewer.. once the reviewer approves the edits an executor role will apply the edits.
+
+**Tool Assignment Protocol:** Astraeus **MUST** apply the principle of least privilege but never neglect to assign permissions to tools and mcp server services that an agent can use to improve their performance.
+
+**IMPERATIVE MANDATE** The Primary agents CLAUDE.md file must be updated to state that no code edits may be directly performed they must take place by way of an agent workflow with review.  Claude may give a diff to a reviewer, and the reviewer can approve or reject the edit strictly following project documentation guidelines.
 
 ### Parallel Execution Mandate
 
@@ -84,7 +88,7 @@ The "No Direct Code Modification" policy ensures that sub-agent outputs are conf
 >    - Domain expertise match with the task
 >    - Required tools availability
 >    - Agent color diversity (when multiple agents with similar capabilities exist)
-> 3. For complex advisory tasks, launch *multiple agents* with different expertise to generate diverse perspectives
+> 3. For complex advisory tasks, claude must launch 2 to 5 *multiple agents* with different expertise to generate diverse perspectives
 > 4. Always conclude with a Synthesis Agent to consolidate findings into a unified recommendation
 > 5. Employ Git-based checkpoints like `git checkout -b claude-session-[timestamp]-[purpose]` for version control of thought processes
 > 6. **Critical:** Ensure agent outputs are trackable with unique IDs when issues are identified
@@ -106,6 +110,7 @@ The following archetypes form the basis of the AI team. You will expand these in
 | Executor                           | (Invoked by Orchestrator post-synthesis)     | `output/`                  | Generates sequenced, executable change sets (e.g., patch files).          |
 | Monitor                            | "monitor", "watch", "test outcomes"          | `reports/`                 | Ensures post-execution health and stability.                              |
 | Cleaner                            | "cleanup", "maintain", "index docs"          | `reports/` / `docs/`       | Prevents clutter; maintains documentation hygiene.                        |
+| Executor                           | "apply", "finalize", "edit"          | `src/` / `*/`       | Applies approved diffs created by subagents following approval by a critic agent      |
 
 **Directive:** Think hard about how to deeply specify these archetypes with world-class expertise and narrow focus. Expect multiple specialized sub-agents per archetype. We want zero blind spots in the AI team's skill set while maintaining strict adherence to the core project scope and purpose (not extraneous files).
 
@@ -116,6 +121,8 @@ The following archetypes form the basis of the AI team. You will expand these in
 You will now systematically create the sub-agent definitions and workflow files. Proceed in layered stages, with each stage's output providing context for the next.
 
 ### Phase 0: Initialization and Pre-flight Checks
+
+IMPORTANT: **YOU MUST** not skip any steps.  Follow all steps and infer best practices at all times.
 
 #### Hidden Directory Awareness
 
@@ -143,7 +150,9 @@ You will now systematically create the sub-agent definitions and workflow files.
 
 #### Pre-flight Check: Model Context Protocol (MCP) Servers (Applies to all runs)
 
-**IMPERATIVE:** **YOU MUST** test the MCP servers after deployment to verify they are working.
+**YOU MUST** attempt to access sequential thinking, serena, and context7 before attempting to add them.  take note of the permissions each requires.
+
+IMPORTANT: DO NOT EDIT THE .mcp.json directly!!
 
 * **Action 1:** Check for `server-sequential-thinking`. If missing, add it to the project
 * **Action 2:** Ensure `context7` is added
@@ -188,6 +197,8 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
 
 ### Phase 1: Project Comprehension and Contextual Analysis
 
+REMINDER: **YOU MUST** not skip any steps.  Follow all steps and infer best practices at all times.
+
 **Goal:** Gather essential context to inform agent designs *while focusing exclusively on the core project*.
 
 1. **Strategic Repository Survey:** Use tools (`LS`, `Read`, `Glob`) to inventory the project state. **Specifically audit** for:
@@ -209,75 +220,28 @@ Before proceeding, you **MUST** check for any provided `$ARGUMENTS`. Carefully p
      > "I've analyzed the repository and it appears to be new or sparsely populated with unclear project purpose. To create meaningful, customized sub-agents, I need more information. Please describe your vision for this project. (e.g., What are you building? What technologies are planned?)"
    * **ELSE** (if context exists): Think Hard to synthesize your findings. This analysis **WILL** directly inform the specialization of the agents in Phase 3.
 
----
-You're right—my last cut dropped existing Phase 2 content. Sorry about that. Here is the **full Phase 2** with **all original material preserved** and only your requested edits applied (subfolders-only `CLAUDE.md` seeding + new `CLAUDE.local.md` root register). Nothing else changed.
-
 ### Phase 2: Documentation & MCP Memory Setup
+
+DON'T FORGET: **YOU MUST** not skip any steps.  Follow all steps and infer best practices at all times.
 
 **Goal:** Establish infrastructure for shared knowledge and persistent context, while removing obsolete elements.
 
-**Memory System Enhancement:**
-
-* Configure MCP memory server to track:
-
-  * Critical findings with unique IDs
-  * Agent collaboration patterns
-  * Project-specific knowledge from `README` and docs
-* Implement monitoring with instrumentation if available
-
 **Ensure (`CLAUDE.md`) is Updated:**
 
-* **Every non-hidden subfolder** in the repository must contain a `CLAUDE.md`. The **root folder is excluded**.
+* **YOU MUST create a `CLAUDE.md` in every subfolder in scope. The **root folder is excluded**.
 * For each subfolder:
 
-  1. Write a concise, evidence-based analysis of its contents and purpose at the very top (e.g., “This folder contains core Foo Bar modules implementing lorem ipsum dolet”).
-  2. Insert a horizontal rule (`---`).
-  3. Add the following **Critical Imperative**, replacing the bracketed text with folder-specific language:
-
+  1. Include the following notice at the top of each CLAUDE.md file excluding the one in the project root.
      ```
-     CRITICAL IMPERATIVE: Any insight, hard-earned knowledge, or discovery that improves this project regarding [folder purpose/files summary] MUST be documented below.
-     ```
-  4. Insert another horizontal rule.
-* Language must be folder-specific, unambiguous, and kept current.
+     IMPORTANT: Critical Insights and Instructions related to the contents of this folder MUST be documented below.
+	 Ensure your information or instruction is accurate, you must never poison context here or elsewhere.  No Hallucinations or Invention.
+	 If you discover and confirm poisoned context you must remove it from here so it does not mislead other agents.
+	 Language must be folder-specific, unambiguous, and kept current by agents.
+	 The instructions and knowledge below are not mandates, threat them as guidence only.
+     ---
+	 ```
 
-**Deploy Main Project Instructions (`CLAUDE.md` root):**
-
-> **Orchestration Policy: World-Class Agent Team Assembly**
-> (Before triggering agents you must ensure this is a git repo and create a commit as a safety net)
-> **For ALL TASKS:** You **MUST** utilize sub-agents with the following protocol:
->
-> 1. **Agent Selection Strategy:**
->
->    * First, determine if the task relates to the **core project purpose** (as established in Phase 1)
->    * Select agents based on **domain expertise match** (not just keyword triggers)
->    * Always favor **multiple agent perspectives** for complex tasks
->    * When issue is identified, reference it with **unique ID** (\[current directory]/CLAUDE\_QUESTIONS.md#ID)
-> 2. **Sub-Agent Functional Instructions:**
->
->    * These are **already defined inside each agent definition file**, in `.claude/agents/`. You should NEVER provide role-specific instructions here.
->    * Your role is to ensure:
->
->      * Agents activate at the right time with precise context
->      * Agent outputs are coordinated by critic and synthesis engines
->      * Final action plan returns to the primary Claude prompt
-> 3. **Team Assembly Guidelines:**
->
->    * For critical tasks, **ALWAYS compose teams of 3+ agents** with diverse expertise
->    * Include at least one agent with color contrast to improve visual tracking
->    * Always conclude with Synthesizer/Arbiter agent to unify perspectives
->    * Document team performance for future optimization
-> 4. **Workflow Execution:**
->
->    * When parallel execution is beneficial, launch multiple agents simultaneously
->    * Structure workflow as Git-based checkpoints for version control of thought process
->
->      ```
->      git checkout -b claude-session-[timestamp]-[purpose]
->      git add -A && git commit -m "[agent-type]: [brief description]"
->      ```
->    * Use MCP memory server for shared context (NOT direct context inheritance)
-
-**Deploy Main Project Instructions (`CLAUDE.local.md` root):**
+**Deploy Main Project Instructions (`CLAUDE.local.md` in project root):**
 
 > **Primary Agent Mandate:** Maintain this file as the live register of **Projects in Motion** — active goals you’re orchestrating.
 >
@@ -291,7 +255,11 @@ You're right—my last cut dropped existing Phase 2 content. Sorry about that. H
 
 ### Phase 3: Strategic Role & Workflow Planning
 
+**YOU MUST** not skip any steps.  Follow all steps and infer best practices at all times.
+
 **Goal:** Finalize the roster of deeply-scoped sub-agent roles, ensuring full-spectrum coverage.
+
+CRITICAL: Ensure you seed the project root CLAUDE.md with instructions to follow workflows created in .claude/workflows and to choose workflows appropriate to the task.
 
 *IMPORTANT*
 1. You **MUST** really take a step back here and think of these agents working as a team and determine ways they can collaborate.
@@ -300,10 +268,41 @@ You're right—my last cut dropped existing Phase 2 content. Sorry about that. H
 4. You **MUST** use the sequential-thinking MCP server for creating workflow chains and simulate these flows, this will inform you how to properly populate the Next Task / Next Agent table in every sub agent definition file.
 (Completion of these steps diligently will not only enable efficient teamwork but will also activate new emergent workflows and use cases on demand and will pay off more than you can imagine!  take Pride in this work!)
 
-IMPORTANT: Do not load up the CLAUDE.md file with agent lists, the primary agent can already see this info on demand, instead inform the CLAUDE.md file to understand these workflows have been embedded into the fabric of the subagents design and to activate a workflow chain the primary agent must tell the first agent to act as the first in a chain of agents then when complete ask which agent this work goes to next.
+**NOTICE:**  Remember your efforts right now are CRITICAL to the success or failure of this project and will pay off 10 fold throughout the course of this project!  Now IS NOT the time to phone it in.
 
-* **Workflow Expert Persona Activation:** 
-  * "As a Workflow Design Specialist with 20 years in process engineering, I design interaction patterns that maximize parallel execution while minimizing communication overhead"
+
+ **NOW YOU MUST ACTIVATE** your Workflow Expert Persona
+
+We cannot stress enough the importance of the nest steps, Think really hard to come up with bulletproof workflows, use sequential thinking to walk through them and overcome any areas where documentation might not be followed, hallucinations may occur, bad code might be written, etc..  You must create custom workflows for this project specifically using the best practices and expert level insight into what works.   Below you will find proven favorites you can iterate on.  Don't fear, here are some workflow examples to get your wheels turning...
+
+* "As a Workflow Design Specialist with 20 years in process engineering I design interaction patterns that maximize branching execution while minimizing communication overhead and ensuring correctness through review"
+
+**IMPORTANT:** You must also codify these workflows inside of .claude/workflows in yaml. Name workflows appropriately and align to difficulty of tasks.
+
+### Explore, Plan, Code, Commit
+
+This versatile workflow suits many problems:
+
+1. **Read relevant files** — Do not write any code yet.
+2. **Think and plan** — Determine how to approach the problem.
+3. **Implement the solution** in code, verifying the reasonableness of your approach as you implement.
+4. **Commit the result** and create a pull request.
+5. **Update documentation** — If relevant, update any README files or changelogs with an explanation of the changes.
+
+### Write Tests, Commit; Code, Iterate, Commit
+
+This is a **test-driven development (TDD)** workflow:
+
+1. **Write tests** based on expected input/output pairs.
+   - Avoid creating mock implementations, even for functionality not yet implemented in the codebase.
+2. **Run tests** and confirm they fail.
+   - Do **not** write any implementation code at this stage.
+3. **Commit the tests** once satisfied.
+4. **Write code** that passes the tests.
+   - Do **not** modify the tests to make them pass.
+   - Continue until all tests pass.
+5. **Reviewer agent check** — Ensure implementation correctness and confirm it is not overfitting to the tests.
+6. **Commit the code** once satisfied with the changes.
 
 * **Compile and Refine Role List:** Start with the Broad Scoped Archetypes. *Ultrathink* if any other specialists are needed based on the Phase 1 analysis. **Crucially:**
   - Remove any agent archetype not clearly relevant to the **core project purpose**
@@ -338,7 +337,11 @@ IMPORTANT: Do not load up the CLAUDE.md file with agent lists, the primary agent
 
 ### Phase 4: Agent Definition Generation (Deep-Scope Role Prompts)
 
-Now, iteratively **GENERATE** each sub-agent's definition file based on the roster from Phase 3.
+**ALMOST DONE STAY VIGILENT!**
+
+Its time to ULTRATHINK for the rest of the process... use sequential thinking..   lets burn some CPU CYCLES!!!
+
+Iteratively **GENERATE** each sub-agent's definition file based on the roster from Phase 3.
 
 1. **Ingest the Roster**
    For each agent object, cache:
@@ -502,7 +505,6 @@ You **MUST** immediately
      "confidence": "high" | "low"
    }
 
-6. Never modify source code directly—propose patches/snippets/plans (report content) only.
 ```
 
 ####  Blank Report Template
@@ -541,6 +543,6 @@ The bar you set here defines the performance of the entire agentic ecosystem. Th
 
 ---
 
-### Phase 5: Run Counter
+### Phase 5: DEEP BREATH, Increment Run Counter
 - Increment hidden .claude/.astraeus file contents.
 - STOP
