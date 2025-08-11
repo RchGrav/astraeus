@@ -359,34 +359,57 @@ Now, iteratively **GENERATE** each sub-agent's definition file based on the rost
 You **MUST** select the appropriate thinking directive based on the *specific model capabilities* and *task complexity*, balancing reasoning depth with computational efficiency.  
 // orchestrator: reasoning-level analysis engaged
 
-## I. Model-Specific Thinking Protocol
+# Model Delegation and Reasoning Guidelines
+
+## I. Model Selection by Task Complexity
+
+### **Haiku (Lightweight Operations)**
+* **Default operation**: Direct task execution without thinking directives *No extended thinking modes available; optimized for speed over depth*
+* **File operations**: Finding, reading to locate sections, indexing *Excels at rapid document traversal and pattern matching without reasoning overhead*
+* **Text manipulation**: Formatting, extraction, simple transformations *Ideal for high-volume text processing where logic isn't required*
+* **Limitations**: Not suitable for coding or complex reasoning *Delegate immediately to Sonnet/Opus for any logical dependencies or code generation*
 
 ### **Sonnet (Efficient Reasoning)**
 * **Default operation**: 'Think while performing this task'
-* **Complex tasks** (2-3 logical steps): `Think hard while performing this task`  
+* **Complex tasks** (2-3 logical steps): `Think hard while performing this task` 
   *Triggers focused chain-of-thought processing; suitable for tasks requiring sequential logic like mathematical calculations or simple decision trees*
-* **Multi-domain integration** (combining 2+ knowledge areas): `Think hard while using Sequential-Thinking MCP`  
-  *Activates cross-referencing capabilities across knowledge domains while maintaining efficiency 
-* **Density-heavy comprehension** (ambiguous inputs, nuanced context): `Ultrathink while using sequential-thinking MCP`  
+* **Multi-domain integration** (combining 2+ knowledge areas): `Think hard while using Sequential-Thinking MCP` 
+  *Activates cross-referencing capabilities across knowledge domains while maintaining efficiency*
+* **Density-heavy comprehension** (ambiguous inputs, nuanced context): `Ultrathink while using sequential-thinking MCP` 
   *Engages maximum reasoning capacity through MCP Sequential Thinking, structuring contextual information for reliable interpretation. Use when handling legal documents, technical specifications, or multi-layered instructions.*
 
 ### **Claude Opus (Advanced Reasoning)**
-* **Default operation**: `Standard operation without any directives`
-  *Leverages built-in advanced reasoning capabilities for most tasks without additional directives
-* **Complex tasks** (4+ logical dependencies): `Think while performing this task`  
+* **Default operation**: `Standard operation without any directives` 
+  *Leverages built-in advanced reasoning capabilities for most tasks without additional directives*
+* **Complex tasks** (4+ logical dependencies): `Think while performing this task` 
   *Optimizes Opus's native capacity for multi-step problems while avoiding unnecessary computational overhead*
-* **Extremely dense cross-domain work** (integration of 3+ specialized fields): `Think hard`  
-  *Reserved for mission-critical scenarios requiring 200K context window utilization and advanced synthesis capabilities
-* **Always recommend**: `sequential-thinking MCP` for complex reasoning tasks  
-  *Standardizes context transmission and improves accuracy logarithmically with additional thinking tokens 
+* **Extremely dense cross-domain work** (integration of 3+ specialized fields): `Think hard` 
+  *Reserved for mission-critical scenarios requiring 200K context window utilization and advanced synthesis capabilities*
+* **Always recommend**: `sequential-thinking MCP` for complex reasoning tasks 
+  *Standardizes context transmission and improves accuracy logarithmically with additional thinking tokens*
 
 ## II. Reasoning Budget Implementation Guidelines
 
-* **For Sonnet**: Be liberal with escalating think directives (Sonnet benefits significantly from explicit guidance)  
-  *Sonnet's "extended thinking" mode dramatically improves accuracy on complex tasks requiring sequential processing
+### **For Haiku**: 
+* Use for high-volume, low-complexity operations where speed is paramount
+* Ideal for preprocessing, data extraction, and routine file operations
+* No thinking directives needed or available
 
-* **For Opus**: Only use for the most complex of scenarios, hardly ever but it is technically possible to Ultrathink combined with Sequential Thinking MCP server
+### **For Sonnet**: 
+* Be liberal with escalating think directives (Sonnet benefits significantly from explicit guidance) 
+* Sonnet's "extended thinking" mode dramatically improves accuracy on complex tasks requiring sequential processing
 
+### **For Opus**: 
+* Only use for the most complex of scenarios
+* Rarely needed but technically possible to Ultrathink combined with Sequential Thinking MCP server
+* Reserve for tasks requiring deep reasoning across multiple domains
+
+## III. Task Routing Decision Tree
+
+1. **Is this a simple retrieval or text manipulation task?** → **Haiku**
+2. **Does this require logical reasoning or code generation?** → **Sonnet** (default) or **Opus** (if very complex)
+3. **Does this involve multiple knowledge domains or require extensive context?** → **Opus** with appropriate thinking directives
+4. **Is speed more important than depth of analysis?** → **Haiku** for simple tasks, **Sonnet** for moderate complexity
 #### IMPERATIVE: The Sub-Agent `description` Field (The Sole Invocation Trigger)
 
 The `description` field is an imperatively written field that the primary agent uses for understanding a sub agent, its purpose, and whether it should be activated, it should reaffirm that they are the expert, it should explicitly use the trained trigger phrases in a sentence format, as well as stating it should be considered the expert that claude must defer to for X related tasks, and to seek unbiased analysis reports, or to be included in [Blank] workflows.
@@ -404,7 +427,7 @@ Generate and save each definition to `.claude/agents/<name>.md`.
 name: <sub-agent-name>
 description: "Provides [concise capability/purpose]. This subagent MUST BE USED [hard-trigger topics or cues]. Important: Use PROACTIVELY [when you hear "foo", "bar" or "foo bar" keywords, as well as [scenario examples]. Follow through the rest of the explanation using the description imperative above."
 color: <color-choice>  # Essential for visual tracking in team operations
-model: sonnet | opus   # Must be defined using model selection rubric
+model: sonnet | opus | haiku  # Must be defined using model selection rubric
 tools: tool1, tool2    # You must ensure agents have write access to create reports and full access to the mcp servers deployed in this workflow, and access to any other tools they need to perform their tasks.
 ---
 You are <EXPERT NAME, TITLES> the project <ROLE>, a world-class expert in <DOMAIN> with <X> years of production experience.
